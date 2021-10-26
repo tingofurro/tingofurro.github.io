@@ -1,3 +1,229 @@
+<!DOCTYPE html>
 <html>
-  Initial Test
+<head>
+    <meta charset="UTF-8">
+    <title>Philippe Laban</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+        body {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Roboto';
+            font-size: 18px;
+        }
+        a {
+            color: #2a7ae2;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #column {
+            width: 750px;
+            margin: 20px auto;
+        }
+        #right_block {
+            width: 200px;
+            padding: 0px 20px;
+            float: right;
+            position: relative;
+            text-align: center;
+        }
+        #right_block #phil_image {
+            width: 100%;
+            margin: 0px 0px;
+            border-radius: 50%;
+            border: 3px solid #666;
+        }
+        #name {
+            font-size: 48px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        #right_block a {
+            color: #2a7ae2;
+            text-decoration: none;
+        }
+        #right_block a:hover {
+            color: #333333;
+            text-decoration: underline;
+        }
+        #first_block {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .header {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 10px 0px;
+        }
+        .pubs {
+            position: relative;
+            overflow: hidden;
+        }
+        .pub {
+            margin: 30px 0px;
+            line-height: 1.5;
+            position: relative;
+            overflow: hidden;
+        }
+        .pub .title {
+            font-weight: 500;
+        }
+        .pub .figure {
+            width: 170px;
+            padding-right: 10px;
+            float: left;
+        }
+        .pub .conference {
+            font-weight: 300;
+        }
+        .pub .links a {
+            padding: 10px;
+            font-weight: 500;
+        }
+        .pixel {
+            opacity: 0;
+            width: 0px; height: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="column">
+        <div id="first_block">
+            <div id="right_block">
+                <img src="phil20.jpeg" id="phil_image" />
+                <a href="mailto:phillab@berkeley.edu">phillab@berkeley.edu</a><br />
+                <a href="https://www.linkedin.com/in/philippe-laban-b5a59b66/" target="_blank" style="color: #005795;">LinkedIn</a>
+            </div>
+            <div id="name">Philippe Laban</div>
+            Philippe is a Ph.D. Candidate in Computer Science at UC Berkeley, advised by 
+            <a href="http://people.ischool.berkeley.edu/~hearst/">Marti Hearst</a> and <a href="https://people.eecs.berkeley.edu/~jfc/">John Canny</a>.<br /><br />
+
+            Philippe's work revolves around <a href="https://newslens.berkeley.edu/">NewsLens project</a>, applying the latest NLP technology to the news domain, thinking of what news interfaces could look like in the not so distant future. Do check out the <a href="https://newslens.berkeley.edu/">demo</a>, also available on the Play and Apple stores.<br /><br />
+
+            Through this journey, some areas of focus have been: summarization, simplification, entity linking, chatbots.<br /><br />
+            
+            I have an interest in framing NLP problems in an unsupervised setting, and seeing how far we can push current NLP models without any training data (summarization, headline grouping, simplification, etc.), often performing on par with supervised methods, and sometimes outperforming them.
+        </div>
+        <div class="header">Teaching / Mentoring</div>
+        <div style="margin: 30px 0px;">
+            I have been a TA (a.k.a. GSI in UCB lingo) for:
+            <ul style='line-height: 1.5;'>
+                <li /> <b>EE120</b> &mdash; Signals and Systems &mdash; Spring 2018,
+                <li /> <b>CS182/282</b> &mdash; Introduction to Deep Learning  &mdash; Spring 2019 & 2020.
+            </ul>
+            I enjoyed leading discussions and lectures, creating homeworks from scratch, and interacting with brilliant students.<br /><br />
+
+            I have also mentored 10+ undegraduate students in their first steps doing research. If you are an undergraduate student interested in research at the intersection of NLP and News, feel free to contact me.
+        </div>
+        <div class="header">Peer-Reviewed Publications</div>
+        <div class="pubs">
+            <div class="pub">
+                <img src="images/Keep_It_Simple.png" class="figure" />
+                <div class="title">Keep It Simple: Unsupervised Simplification of Multi-Paragraph Text</div>
+                <div class="authors">Philippe Laban, Tobias Schnabel, Paul N. Bennett, Marti A. Hearst</div>
+                <div class="conference">Association for Computational Linguistics (ACL), 2021 - Long Paper</div>
+                <div class="links">
+                    <a href="pdfs/ACL2021_Keep_It_Simple.pdf" target="_new">PDF</a>
+                    <a href="https://github.com/tingofurro/keep_it_simple" target="_new">Code</a>
+                    <a href="pdfs/ACL2021_Keep_it_Simple_Presentation.pdf" target="_new">Presentation</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/acl2021_coherence.png" class="figure" />
+                <div class="title">Can Transformer Models Measure Coherence In Text? Re-Thinking the Shuffle Test</div>
+                <div class="authors">Philippe Laban, Luke Dai, Lucas Bandarkar, Marti A. Hearst</div>
+                <div class="conference">Association for Computational Linguistics (ACL), 2021 - Short Paper</div>
+                <div class="links">
+                    <a href="pdfs/ACL2021_Coherence_Shuffle.pdf" target="_new">PDF</a>
+                    <a href="https://github.com/tingofurro/shuffle_test" target="_new">Code</a>
+                    <a href="pdfs/ACL2021_Coherence_Presentation.pdf" target="_new">Presentation</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/naacl_2021.png" class="figure" />
+                <div class="title">News Headline Grouping As A Challenging NLU Task</div>
+                <div class="authors">Philippe Laban, Lucas Bandarkar, Marti A. Hearst</div>
+                <div class="conference">North American Chapter of the Association for Computational Linguistics (NAACL), 2021</div>
+                <div class="links">
+                    <a href="pdfs/NAACL2021_HLG.pdf" target="_new">PDF</a>
+                    <a href="https://github.com/tingofurro/headline_grouping" target="_new">Code</a>
+                    <a href="https://huggingface.co/datasets/hlgd" target="_new">Data</a>
+                    <a href="pdfs/2021_naacl2021_presentation.pdf" target="_new">Presentation</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/summary_loop.png" class="figure" />
+                <div class="title">The Summary Loop: Learning to Write Abstractive Summaries Without Examples</div>
+                <div class="authors">Philippe Laban, Andrew Hsi, John Canny, Marti Hearst</div>
+                <div class="conference">Association for Computational Linguistics (ACL), 2020</div>
+                <div class="links">
+                    <a href="pdfs/ACL2020_Summary_Loop.pdf" target="_new">PDF</a>
+                    <a href="https://github.com/CannyLab/summary_loop" target="_new">Code</a>
+                    <a href="pdfs/ACL2020_Summary_Loop_Presentation.pdf" target="_new">Presentation</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/chatbot.png" class="figure" />
+                <div class="title">What's The Latest? A Question-driven News Chatbot</div>
+                <div class="authors">Philippe Laban, John Canny, Marti Hearst</div>
+                <div class="conference">System Demonstration at ACL, 2020</div>
+                <div class="links">
+                    <a href="pdfs/ACL2020_News_chatbot.pdf" target="_new">PDF</a>
+                    <a href="https://newslens.berkeley.edu/" target="_new">Demo</a>
+                    <a href="pdfs/ACL2020_News_Chatbot_Presentation.pdf" target="_new">Presentation</a>
+                    <a href="https://www.youtube.com/watch?v=eze9hpEPUgo" target="_new">Teaser</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/cpj_2019.png" class="figure" />
+                <div class="title">A framework for a text-centric user interface for navigating complex news stories</div>
+                <div class="authors">Philippe Laban, John Canny, Marti Hearst</div>
+                <div class="conference">Computation + Journalism, 2019</div>
+                <div class="links">
+                    <a href="pdfs/CpJ2019_NewsLens.pdf" target="_new">PDF</a>
+                    <a href="pdfs/CpJ2019_NewsLens_Presentation.pdf" target="_new">Presentation</a>
+                    <a href="https://www.youtube.com/watch?v=HwzMziBe9gk" target="_new">Teaser</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/acl2017.png" class="figure" />
+                <div class="title">newsLens: building and visualizing long-ranging news stories</div>
+                <div class="authors">Philippe Laban, Marti Hearst</div>
+                <div class="conference">Workshop on Events and Stories in the News, ACL, 2017</div>
+                <div class="links">
+                    <a href="pdfs/ACL2017_NewsLens.pdf" target="_new">PDF</a>
+                    <a href="pdfs/ACL2017_NewsLens_Presentation.pdf" target="_new">Presentation</a>
+                </div>
+            </div>
+        </div>
+        <div class="header">Other Work</div>
+        <div class="pubs">
+            <div class="pub">
+                <img src="images/copy_and_transform.png" class="figure" />
+                <div class="title">Abstractive News Summarization via Copying and Transforming</div>
+                <div class="authors">Philippe Laban, John Canny, Marti Hearst</div>
+                <div class="conference">Unpublished, 2019</div>
+                <div class="links">
+                    <a href="pdfs/2019_Copy_And_Transform.pdf" target="_new">PDF</a>
+                </div>
+            </div>
+            <div class="pub">
+                <img src="images/actor_rnn.png" class="figure" style="padding-bottom: 20px;" />
+                <div class="title">From Brooklyn Barbers To Movie Stars: Using Introductions To Construct Embeddings Of People</div>
+                <div class="authors">Philippe Laban, John Canny, Marti Hearst</div>
+                <div class="conference">Unpublished, 2018</div>
+                <div class="links">
+                    <a href="pdfs/2018_ActorRNN.pdf" target="_new">PDF</a>
+                    <a href="pdfs/2018_train8_presentation.pdf" target="_new">Presentation</a>
+                </div>
+            </div>
+        <iframe src="https://newslens.berkeley.edu/api/personal_website" class='pixel'></iframe>
+        </div>
+    </div>
+</body>
 </html>
