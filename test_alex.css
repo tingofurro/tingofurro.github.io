@@ -1,0 +1,61 @@
+/* Apply styles to the body element */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Style for the main heading */
+h1 {
+    color: #333;
+}
+
+/* Style for subheadings */
+h2 {
+    color: #666;
+}
+
+/* Style for paragraphs */
+p {
+    line-height: 1.4;
+}
+
+/* Style for unordered lists */
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Style for tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Style for table headers */
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 8px;
+}
+
+/* Style for table cells */
+td {
+    padding: 8px;
+}
+
+/* Style for table rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Apply styles to links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Change link color on hover */
+a:hover {
+    color: #0056b3;
+}
