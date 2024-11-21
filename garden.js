@@ -3,6 +3,11 @@
 var flowerTemplateHTML = $('#flower_template').html();
 
 var garden_height = 580;
+// alert($('body').width());
+// if($('body').width() < 768) {
+//     garden_height *= 2;
+//     alert('mobile');
+// }
 // const plantWidth = garden.width() / research_garden.length;
 const plantWidth = 400;
 var root_stem_height = 70;

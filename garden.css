@@ -94,3 +94,8 @@
     text-anchor: middle;
     dominant-baseline: middle;
 }
+@media (max-width: 768px) {
+    #garden_title {
+        font-size: 30px;
+    }
+}

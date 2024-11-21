@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Philippe Laban</title>
     <link rel="stylesheet" href="main.css">
@@ -10,6 +11,7 @@
 <body>
     <div id="column">
         <div id="first_block">
+            <div id="name">Philippe Laban</div>
             <div id="right_block">
                 <img src="phil20.jpeg" id="phil_image" />
                 <a href="mailto:plaban@microsoft.com">plaban@microsoft.com</a><br />
@@ -17,19 +19,15 @@
                 <a href="https://x.com/PhilippeLaban" target="_blank" style="color: #005795;">X/Twitter</a><br />
                 <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank" style="color: #005795;">Google Scholar</a>
             </div>
-            <div id="name">Philippe Laban</div>
-            Hi! I'm a Research Scientist at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a>, based in New York. I completed my Ph.D. in CS in 2021, advised by 
-            <a href="http://people.ischool.berkeley.edu/~hearst/">Marti Hearst</a> and <a href="https://people.eecs.berkeley.edu/~jfc/">John Canny</a> at UC Berkeley.<br /><br />
+            <div id="intro_para">
+                Hi! I'm a Research Scientist at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a>, based in New York. I completed my Ph.D. in CS in 2021, advised by 
+                <a href="http://people.ischool.berkeley.edu/~hearst/">Marti Hearst</a> and <a href="https://people.eecs.berkeley.edu/~jfc/">John Canny</a> at UC Berkeley.<br /><br />
+    
+                I work at the intersection of NLP (~70%) and HCI (~30%). I am passionate about studying and building the future of <b>reading</b> and <b>writing</b> interfaces as I believe that NLP technology will revolutionize how we consume (read) and create (write) information. How do we get there?<br /><br />
+    
+                See my research garden below for a visual organization of some of my work, or my <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a> for a full list of publications.
+            </div>
 
-            I work at the intersection of NLP (~70%) and HCI (~30%). I am passionate about studying and building the future of <b>reading</b> and <b>writing</b> interfaces as I believe that NLP technology will revolutionize how we consume (read) and create (write) information. How do we get there?<br /><br />
-
-            See my research garden below for a visual organization of some of my work, or my <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a> for a full list of publications.
-
-            <!-- Philippe's thesis work revolved around applying the latest NLP technology to the news domain, thinking of what news interfaces could look like in the not so distant future.<br /><br /> -->
-
-            <!-- Philippe also works in text Summarization and Simplification, building methods for unsupervised text generation: designing methods (such as the Summary Loop and Keep it Simple) that can compete with supervised method, without relying on the existence of a dataset.<br /><br /> -->
-
-            <!-- An area of excitement for Philippe is thinking about ways to evaluate NLP and NLG systems, particularly thinking of task-oriented human evaluation that put NLP systems in practical settings and measure value added by a system.<br /><br/> -->
         </div>
     </div>
 
@@ -47,12 +45,12 @@
     </svg>
     <div id="garden_title">Philippe's Research Garden</div>
     <div id="garden_container">
-        <svg id="garden"></svg>
+        <svg id="garden" preserveAspectRatio="xMinYMin meet"></svg>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="garden.js"></script>
+    <script src="garden.js?v=2"></script>
     <script>
         var papers = [
             {"id": "newslens", "title": "NewsLens\nACL2017 Workshop", "url": "https://aclanthology.org/W17-2701.pdf", "root_node": 1, "root_name": "News Reading Interfaces\n2016-2023", "root_color": "#FA9189"},
