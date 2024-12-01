@@ -19,7 +19,7 @@ const cloudWidth = 75, cloudHeight = 30, cloud_offset = 0;
 var research_garden = [];
 var id2paper = {};
 
-function build_garden(papers, title) {
+function build_garden(papers) {
     research_garden = [];
     id2paper = {};
     for(var paper of papers) {
@@ -41,7 +41,8 @@ function build_garden(papers, title) {
     $('#garden').width(garden_width).height(garden_height);
     $('#garden_container'); // .width(garden_width).height
     
-    renderGarden(title);
+    calculate_coauthors(papers);
+    renderGarden();
 }
 
 var flower_positions = {};
@@ -102,19 +103,28 @@ function drawPaperTree(parentElement, paper, x_offset, y_offset, plant_x_pos, pl
     // Create flower
     const flower = document.createElementNS("http://www.w3.org/2000/svg", "g");
     flower.setAttribute("class", "flower");
+    flower.setAttribute('id', 'flower_'+paper.id);
     var flowerHTML = flowerTemplateHTML.replaceAll(/\[\[FLOWER_CLASS\]\]/g, flower_class);
     flowerHTML = flowerHTML.replaceAll(/\[\[X\]\]/g, 0);
     flowerHTML = flowerHTML.replaceAll(/\[\[Y\]\]/g, 0);
 
+    // flower.innerHTML = flowerHTML;
+    // instead, put the flowerHTML into a subgroup
+    flowerHTML = `<g class='flower_subgroup'>${flowerHTML}</g>`;
     flower.innerHTML = flowerHTML;
     flower.setAttribute("onclick", `open_paper('${paper.id}')`);
     flower.setAttribute("transform", `translate(${x_offset}, ${y_offset})`);
+    // do it without using the 
     
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     label.setAttribute("class", "label");
     label.setAttribute("onclick", `open_paper('${paper.id}')`);
 
+    // add the venue to the title_lines
     var titleLines = paper.title.split('\n');
+    if(paper.venue) {
+        titleLines.push(paper.venue);
+    }
     var title_x_offset = (paper.is_left_child)?x_offset-30:x_offset+30;
 
     titleLines.forEach((line, index) => {
@@ -173,8 +183,18 @@ function drawPaperTree(parentElement, paper, x_offset, y_offset, plant_x_pos, pl
     bringFlowersToFront();
 }
 function open_paper(paper_id) {
-    var paper = id2paper[paper_id];
-    window.open(paper.url, '_blank');
+    // var paper = id2paper[paper_id];
+    // window.open(paper.url, '_blank');
+    // instead of that, we're going to open a centered modal with some info about the paper
+    $('#paper_modal').fadeIn(200);
+    $('#paper_modal_title').text(id2paper[paper_id].full_title);
+    $('#paper_modal_venue').text("— " + id2paper[paper_id].venue);
+    $('#paper_modal_content').text(id2paper[paper_id].summary);
+    var links = `<a href='${id2paper[paper_id].url}' target='_blank'>arXiv</a>`;
+    // for(var link of id2paper[paper_id].links) {
+    //     links += `<a href="${link}" target="_blank">${link}</a><br>`;
+    // }
+    $('#paper_modal_links').html(links);
 }
 function bringFlowersToFront() {
     var flowers = $(".flower");
@@ -185,7 +205,7 @@ function bringFlowersToFront() {
 }
 
 // Main rendering function
-function renderGarden(title) {
+function renderGarden() {
     var garden_width = $('#garden').width();
     
     // Add a group for indirect connections at the start
@@ -235,4 +255,43 @@ function renderGarden(title) {
         const plantElement = createPlant(plant, x_pos, index);
         $('#garden').append(plantElement);
     });
+}
+function calculate_coauthors(papers) {
+    // count top 10 coauthors
+    var coauthor_counts = {};
+    for(var i = papers.length-1; i >= 0; i--) {
+        var paper = papers[i];
+        for(var coauthor of paper.coauthors) {
+            coauthor_counts[coauthor] = (coauthor_counts[coauthor] || 0) + 1;
+        }
+    }
+    // sort by count
+    var sorted_coauthors = Object.entries(coauthor_counts).sort((a, b) => b[1] - a[1]);
+    for(var i = 0; i < 10; i++) {
+        var coauthor = sorted_coauthors[i];
+        var coauthor_escaped = coauthor[0].replaceAll("'", "\\'");
+        $('#coauthor_list').append(`<div class="coauthor" onclick="select_coauthor('${coauthor_escaped}')">${coauthor[0]}</div>`);
+    }
+    // if there are no coauthors, hide the coauthor hall of fame
+    if(sorted_coauthors.length == 0) {
+        $('#coauthor_hall_of_fame').hide();
+    }
+}
+var selected_coauthor = null;
+function select_coauthor(coauthor) {
+    if(selected_coauthor == coauthor) {
+        selected_coauthor = null;
+    }
+    else {
+        selected_coauthor = coauthor;
+    }
+    // iterate over papers, and add a class `.selected_flower` to the flowers that have the coauthor
+    $('.flower').removeClass('selected_flower');
+    for(var paper of papers) {
+        if(paper.coauthors.includes(selected_coauthor)) {
+            $(`#flower_${paper.id}`).addClass('selected_flower');
+        }
+    }
+    $('.coauthor').removeClass('selected_coauthor');
+    $(`.coauthor:contains('${selected_coauthor}')`).addClass('selected_coauthor');
 }

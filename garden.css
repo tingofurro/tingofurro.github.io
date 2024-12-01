@@ -7,15 +7,17 @@
     overflow-x: auto;
     /* border: 1px solid #666; */
     position: relative;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
 }
 #garden {
     background-color: #f8f2ef;
     width: 1000px;
 }
-#garden_title {
+#garden_title, #coauthor_hall_of_fame {
     max-width: 1000px;
     margin: 0 auto;
+}
+#garden_title {
     margin-top: 50px;
     background: #e5e5f5;
     font-size: 44px;
@@ -46,11 +48,21 @@
 }
 .flower {
     cursor: pointer;
-    z-index: 2;
+
+}
+.flower:hover .flower_subgroup {
+    transform: scale(1.2);
+    transition: transform 0.2s;
 }
 .flower:hover .petal {
     opacity: 1 !important;
     cursor: pointer;
+}
+.selected_flower .flower_subgroup {
+    /* make it bigger, but still centered */
+    transform: scale(1.5);
+    /* animate the transition */
+    transition: transform 0.2s;
 }
 .direction-label {
     font-size: 16px;
@@ -94,6 +106,77 @@
     text-anchor: middle;
     dominant-baseline: middle;
 }
+
+/* coauthor hall of fame */
+#coauthor_hall_of_fame {
+    margin-top: 20px;
+}
+#coauthor_title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.coauthor {
+    display: inline-block;
+    font-size: 18px;
+    margin: 5px 0px;
+    width: 200px;
+    text-align: center;
+    line-height: 2.0;
+    cursor: pointer;
+}
+.selected_coauthor {
+    font-weight: 500;
+    text-decoration: underline;
+}
+/* paper modal */
+
+#paper_modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    max-width: 90vw;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+    display: none;
+}
+#paper_modal_close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#paper_modal_title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: inline;
+}
+#paper_modal_venue {
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    display: inline;
+}
+#paper_modal_content {
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#paper_modal_links {
+    margin-top: 10px;
+}
+
 @media (max-width: 768px) {
     #garden_title {
         font-size: 30px;
