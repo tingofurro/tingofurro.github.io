@@ -85,7 +85,20 @@ a:hover {
     opacity: 0;
     width: 0px; height: 0px;
 }
-
+.section {
+    width: 800px;
+    max-width: 100%;
+    margin: 20px auto;
+    margin-top: 40px;
+}
+.section_title {
+    font-size: 28px;
+    font-weight: 300;
+    margin: 10px 0px;
+}
+.section li {
+    margin-bottom: 10px;
+}
 @media (max-width: 768px) {
     #name {
         text-align: center;

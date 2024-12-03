@@ -175,8 +175,12 @@
 }
 #paper_modal_links {
     margin-top: 10px;
+    text-align: center;
 }
-
+#paper_modal_links a {
+    padding: 20px;
+    /* margin-right: 20px; */
+}
 @media (max-width: 768px) {
     #garden_title {
         font-size: 30px;

@@ -3,35 +3,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Philippe Laban</title>
+    <title>Simple Research Garden</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="garden.css">
     <style id="flower_css"></style>
 </head>
 <body>
-    <div id="column">
-        <div id="first_block">
-            <div id="name">Philippe Laban</div>
-            <div id="right_block">
-                <img src="phil20.jpeg" id="phil_image" />
-                <a href="mailto:plaban@microsoft.com">plaban@microsoft.com</a><br />
-                <a href="https://www.linkedin.com/in/philippe-laban-b5a59b66/" target="_blank" style="color: #005795;">LinkedIn</a><br />
-                <a href="https://x.com/PhilippeLaban" target="_blank" style="color: #005795;">X/Twitter</a><br />
-                <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank" style="color: #005795;">Google Scholar</a>
-            </div>
-            <div id="intro_para">
-                Hi! I'm a Research Scientist at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a>, based in New York. I completed my Ph.D. in CS in 2021, advised by 
-                <a href="http://people.ischool.berkeley.edu/~hearst/">Marti Hearst</a> and <a href="https://people.eecs.berkeley.edu/~jfc/">John Canny</a> at UC Berkeley.<br /><br />
-    
-                I work at the intersection of NLP (~70%) and HCI (~30%). I am passionate about studying and building the future of <span style="color: #a8372f;">reading</span> and <span style="color: #379644;">writing</span> interfaces as I believe that NLP technology will revolutionize how we <span style="color: #a8372f;">consume</span> (read) and <span style="color: #379644;">create</span> (write) information. How do we get there?<br /><br />
-
-                Specific tasks I'm passionate about include <span style="color: #b3890d;">summarization</span>, <span style="color: #379644;">simplification</span> (which you can think of as "reading tools" if you choose to), and <span style="color: #6d3cdf;">LLM evaluation/benchmarking</span>.<br /><br />
-    
-                See my research garden below for a visual organization of some of my work, or my <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a> for a full list of publications.
-            </div>
-        </div>
-    </div>
-
     <!-- Research Garden -->
     <svg id="flower_template" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
         <ellipse rx="10" ry="20" transform="rotate(0)" fill="[[COLOR]]" class="petal [[FLOWER_CLASS]]"/>
@@ -60,30 +37,6 @@
         <div id="paper_modal_content"></div>
         <div id="paper_modal_links"></div>
     </div>
-
-    <div class="section">
-        <div class="section_title">Want your own Research Garden visualization?</div>
-        <p>
-            All you need is: (1) <a href="https://tingofurro.github.io/garden.css" target="_blank">garden.css</a>, (2) <a href="https://tingofurro.github.io/garden.js" target="_blank">garden.js</a>, and (3) <a href="https://github.com/tingofurro/tingofurro.github.io/blob/main/simple_garden.html" target="_blank">an HTML file</a>. In the HTML file, there's a javascript variable <code>var papers = [...];</code> that you can modify to include your own papers. If you end up using it, feel free to send me a link, so I can check it out!
-        </p>
-    </div>
-
-    <div class="section" id="reach_out">
-        <div class="section_title">Reach out!</div>
-
-        <p>
-            Thanks for visiting my website! Here are some reasons to reach out to me:
-            <ul>
-                <li><b>You're a researcher</b>, and you have a question about some of my work, or want to brainstorm, pitch a research project, debug an idea, etc.</li>
-                <li><b>You're a journalist</b>, and want an technical opinion on a topic I have expertise in. (See some articles I've been interviewed for <a href="https://www.nytimes.com/2023/11/06/technology/chatbots-hallucination-rates.html">NYTimes</a>, <a href="https://www.science.org/content/article/is-your-ai-hallucinating-new-approach-can-tell-when-chatbots-make-things-up">Science</a>, <a href="https://www.lemonde.fr/pixels/article/2024/06/17/faut-il-s-inquieter-des-hallucinations-des-ia-comme-chatgpt-ou-gemini_6240971_4408996.html">Le Monde</a>, <a href="https://podcasts.apple.com/ca/podcast/like-your-new-best-friend-an-ai-chatbot/id1639175294?i=1000575694297">Podcast</a>)</li>
-                <li><b>You work at a startup</b>, and want technical expertise, either informally or as a board member/consultant. I've advised a few startups with products related to news reading, summarization, and factuality.</li>
-                <li><b>You work on NLP/HCI in NYC</b>, and want to grab a coffee to meet likeminded folks in the city.</li>
-            </ul>
-
-            This list is likely not exhaustive. When in doubt, reach out by email!
-        </p>
-    </div>
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

@@ -191,9 +191,11 @@ function open_paper(paper_id) {
     $('#paper_modal_venue').text("— " + id2paper[paper_id].venue);
     $('#paper_modal_content').text(id2paper[paper_id].summary);
     var links = `<a href='${id2paper[paper_id].url}' target='_blank'>arXiv</a>`;
-    // for(var link of id2paper[paper_id].links) {
-    //     links += `<a href="${link}" target="_blank">${link}</a><br>`;
-    // }
+    if(id2paper[paper_id].additional_links) {
+        for(var link_type of Object.keys(id2paper[paper_id].additional_links)) {
+            links += `<a href="${id2paper[paper_id].additional_links[link_type]}" target="_blank">${link_type}</a>`;
+        }
+    }
     $('#paper_modal_links').html(links);
 }
 function bringFlowersToFront() {
