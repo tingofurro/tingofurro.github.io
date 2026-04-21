@@ -16,9 +16,9 @@
             <div id="right_block">
                 <img src="phil20.jpeg" id="phil_image" />
                 <a href="mailto:plaban@microsoft.com">plaban@microsoft.com</a><br />
-                <a href="https://www.linkedin.com/in/philippe-laban-b5a59b66/" target="_blank" style="color: #005795;">LinkedIn</a><br />
-                <a href="https://x.com/PhilippeLaban" target="_blank" style="color: #005795;">X/Twitter</a><br />
-                <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank" style="color: #005795;">Google Scholar</a>
+                <a href="https://www.linkedin.com/in/philippe-laban-b5a59b66/" target="_blank">LinkedIn</a><br />
+                <a href="https://x.com/PhilippeLaban" target="_blank">X/Twitter</a><br />
+                <a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>
             </div>
             <div id="intro_para">
                 Hi! I'm a Research Scientist at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a>, based in New York. I completed my Ph.D. in CS in 2021, advised by 
@@ -43,19 +43,21 @@
         <ellipse rx="10" ry="20" transform="rotate(225)" fill="[[COLOR]]" class="petal [[FLOWER_CLASS]]"/>
         <ellipse rx="10" ry="20" transform="rotate(270)" fill="[[COLOR]]" class="petal [[FLOWER_CLASS]]"/>
         <ellipse rx="10" ry="20" transform="rotate(315)" fill="[[COLOR]]" class="petal [[FLOWER_CLASS]]"/>
-        <circle r="6" fill="white"/>
+        <circle r="6" fill="url(#center_gradient)"/>
     </svg>
-    <div id="garden_title">Philippe's Research Garden</div>
+    <div id="garden_title">Philippe's Research Garden <span id="garden_title_scroll_hint">Scroll →</span></div>
     <div id="garden_container">
         <svg id="garden" preserveAspectRatio="xMinYMin meet"></svg>
      </div>
+     <div id="garden_scroll_hint">← scroll to explore →</div>
      <div id="coauthor_hall_of_fame">
         <div id="coauthor_title">Recurrent Coauthors ("Hall of Friends")</div>
         <div id="coauthor_list"></div>
     </div>
+    <div id="paper_modal_backdrop" onclick="$('#paper_modal').fadeOut(200); $('#paper_modal_backdrop').fadeOut(200);"></div>
     <div id="paper_modal">
         <!-- a close icon at the top right -->
-        <div id="paper_modal_close" onclick="$('#paper_modal').fadeOut(200);">X</div>
+        <div id="paper_modal_close" onclick="$('#paper_modal').fadeOut(200); $('#paper_modal_backdrop').fadeOut(200);">&#10005;</div>
         <div id="paper_modal_title"></div>
         <div id="paper_modal_venue"></div>
         <div id="paper_modal_content"></div>
@@ -76,7 +78,7 @@
             Thanks for visiting my website! Here are some reasons to reach out to me:
             <ul>
                 <li><b>You're a researcher</b>, and you have a question about some of my work, or want to brainstorm, pitch a research project, debug an idea, etc.</li>
-                <li><b>You're a journalist</b>, and want an technical opinion on a topic I have expertise in. (See some articles I've been interviewed for <a href="https://www.nytimes.com/2023/11/06/technology/chatbots-hallucination-rates.html">NYTimes</a>, <a href="https://www.science.org/content/article/is-your-ai-hallucinating-new-approach-can-tell-when-chatbots-make-things-up">Science</a>, <a href="https://www.lemonde.fr/pixels/article/2024/06/17/faut-il-s-inquieter-des-hallucinations-des-ia-comme-chatgpt-ou-gemini_6240971_4408996.html">Le Monde</a>, <a href="https://podcasts.apple.com/ca/podcast/like-your-new-best-friend-an-ai-chatbot/id1639175294?i=1000575694297">Podcast</a>)</li>
+                <li><b>You're a journalist</b>, and want an technical opinion on a topic I have expertise in. (See some articles I've been interviewed for <a href="https://www.nytimes.com/2023/11/06/technology/chatbots-hallucination-rates.html">NYTimes</a>, <a href="https://www.science.org/content/article/is-your-ai-hallucinating-new-approach-can-tell-when-chatbots-make-things-up">Science</a>, <a href="https://www.lemonde.fr/pixels/article/2024/06/17/faut-il-s-inquieter-des-hallucinations-des-ia-comme-chatgpt-ou-gemini_6240971_4408996.html">Le Monde</a>, <a href="https://spectrum.ieee.org/ai-sycophancy">IEEE Spectrum</a>, <a href="https://podcasts.apple.com/ca/podcast/like-your-new-best-friend-an-ai-chatbot/id1639175294?i=1000575694297">Podcast</a>)</li>
                 <li><b>You work at a startup</b>, and want technical expertise, either informally or as a board member/consultant. I've advised a few startups with products related to news reading, summarization, and factuality.</li>
                 <li><b>You work on NLP/HCI in NYC</b>, and want to grab a coffee to meet likeminded folks in the city.</li>
             </ul>
@@ -88,47 +90,345 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="garden.js?v=2"></script>
+    <!-- Publication data as HTML (editable, crawlable, used by garden.js) -->
+    <details id="paper_data">
+    <summary>Selected Publications (click to expand)</summary>
+        <!-- ===== Interacting with AI (2023-now) ===== -->
+        <article class="paper-entry" data-id="flipflop" data-title="FlipFlop Experiment" data-venue="arXiv"
+            data-url="https://arxiv.org/abs/2311.08596"
+            data-root-node="1" data-root-name="Interacting with AI|2023-now" data-root-color="#D1BDFF"
+            data-coauthors="Lidiya Murakhovs'ka, Caiming Xiong, Chien-Sheng Wu"
+            data-full-title="Are You Sure? Challenging LLMs Leads to Performance Drops in The FlipFlop Experiment"
+            data-summary="What happens when you give an LLM a classification task, it gets it right, and you ask it 'Are you sure?'. Universally, LLMs tend to flip their answer: favoring to a superficial agreement with the user over being accurate. We connect the FlipFlop effect with the connect of sycophancy in LLMs, and show that finetuning is not a panacea to cure the issue, although it helps a bit.">
+        </article>
+
+        <article class="paper-entry" data-id="lost_in_conv" data-title="Lost in Conversation" data-venue="ICLR2026"
+            data-url="https://arxiv.org/abs/2505.06120" data-parent="flipflop"
+            data-coauthors="Hiroaki Hayashi, Yingbo Zhou, Jennifer Neville"
+            data-full-title="LLMs Get Lost In Multi-Turn Conversation"
+            data-summary="A large-scale simulation experiment with 15 LLMs. We show that on the exact same set of tasks, model performance degrades (39%!) in multi-turn underspecified conversation, compared to single-turn, fully-specified conversations. We find that this is because when models take a wrong turn, they get lost and do not recover (reliability issue rather than aptitude)."
+            data-links-code="https://github.com/microsoft/lost_in_conversation"
+            data-links-data="https://huggingface.co/datasets/microsoft/lost_in_conversation">
+        </article>
+
+        <article class="paper-entry" data-id="delegate52" data-title="DELEGATE52" data-venue="arxiv"
+            data-url="https://arxiv.org/abs/2604.15597" data-parent="lost_in_conv" data-latest="1"
+            data-coauthors="Tobias Schnabel, Jennifer Neville"
+            data-full-title="LLMs Corrupt Your Documents When You Delegate"
+            data-summary="We create work environments in 52 professional domains (such as crystallography, aviation, weaving, Python programming) and simulate long-horizon delegated workstreams to study current AI system readiness for delegated workflows (i.e., vibe-coding). We find that current LLMs corrupt documents during delegated workflows, and are not yet ready for delegation across diverse professional contexts."
+            data-links-code="https://github.com/microsoft/delegate52"
+            data-links-data="https://huggingface.co/datasets/microsoft/delegate52">
+        </article>
+
+        <article class="paper-entry" data-id="userlm" data-title="UserLM" data-venue="ICLR2026"
+            data-url="https://arxiv.org/abs/2510.06552" data-parent="lost_in_conv"
+            data-coauthors="Tarek Naous, Wei Xu, Jennifer Neville"
+            data-full-title="Flipping the Dialogue: Training and Evaluating User Language Models"
+            data-summary="We train an 8b LLM specifically to simulate the user role in user-AI conversations. We find that this model is much more diverse in natural in simulating users than prompting assistant models (the standard approach). We argue for the development of better user-simulating models, as we show assistant models are limited in their simulation capabilities."
+            data-links-model="https://huggingface.co/microsoft/UserLM-8b">
+        </article>
+
+        <!-- ===== Writing/Editing (2020-now) ===== -->
+        <article class="paper-entry" data-id="keepitsimple" data-title="Keep It Simple" data-venue="ACL2021"
+            data-url="https://arxiv.org/abs/2107.03444"
+            data-root-node="1" data-root-name="Writing/Editing|2020-now" data-root-color="#B3F5BC"
+            data-coauthors="Tobias Schnabel, Paul Bennett, Marti A. Hearst"
+            data-full-title="Keep it Simple: Unsupervised Simplification of Multi-Paragraph Text"
+            data-summary="First baby steps in the field of simplification (a sister task to summarization). We approached it in an entirely unsupervised way (a la Summary Loop), by crafting rewards for fluency, relevance, and simplicity, and optimizing through RL. Neat Finding: an algorithmic improvement to the popular SCST algorithm (k-SCST) which yielded much more stable training, and better models. Also: a focus on paragraph-level (rather than sentence-level) simplification, which was not so common at the time!"
+            data-links-code="https://github.com/tingofurro/keep_it_simple"
+            data-links-video="https://aclanthology.org/2021.acl-long.498.mp4"
+            data-links-model="https://huggingface.co/philippelaban/keep_it_simple">
+        </article>
+
+        <article class="paper-entry" data-id="swipe" data-title="SWiPE" data-venue="ACL2023"
+            data-url="https://arxiv.org/abs/2305.19204" data-parent="keepitsimple"
+            data-coauthors="Jesse Vig, Wojciech Kryscinski, Caiming Xiong, Chien-Sheng Wu"
+            data-full-title="SWiPE: A Dataset for Document-Level Simplification of Wikipedia Pages"
+            data-summary="Improved the extraction process of simplification document pairs from Simple Wikipedia, showing that Swiki is a great resource to study the simplification process. Prior work had mostly disregarded SWiki in favor of less publicly available datasets such as Newsela."
+            data-links-code="https://github.com/salesforce/simplification">
+        </article>
+
+        <article class="paper-entry" data-id="art_or_artifice" data-title="Art or Artifice" data-venue="CHI2024"
+            data-url="https://arxiv.org/abs/2309.14556" data-parent="swipe"
+            data-coauthors="Tuhin Chakrabarty, Chien-Sheng Wu"
+            data-full-title="Art or Artifice? Large Language Models and the False Promise of Creativity"
+            data-summary="Work led by Tuhin Chakrabarty as an intern at Salesforce Research. Are LLMs capable of high-quality creative fictional writing, to the level of short-stories published in the New Yorker. We designed a methodology to evaluate story quality (through rigorous manual evaluation by expert writers), and found a very large gap between professionally-written and AI-generated stories. Neat Finding: at the time, LLMs were not capable of even judging which stories were better than others, and tended to favor more bland AI-like writing."
+            data-links-code="https://github.com/salesforce/creativity_eval"
+            data-links-data_hf="https://huggingface.co/datasets/Salesforce/ttcw_creativity_eval"
+            data-links-video="https://dl.acm.org/doi/10.1145/3613904.3642731">
+        </article>
+
+        <article class="paper-entry" data-id="ai_writing_idiosyncracies" data-title="Writing Idiosyncracies" data-venue="CHI2025"
+            data-url="https://arxiv.org/abs/2409.14509" data-parent="art_or_artifice" data-is-left-child="1"
+            data-coauthors="Tuhin Chakrabarty, Chien-Sheng Wu"
+            data-full-title="Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits"
+            data-summary="Work led by Tuhin at Salesforce Research. Following up on Art or Artifice. Lowering our expectation from a story (1000+ words) to a single paragraph (100-200 words). We find in a controlled experiment that LLMs still struggle to generate high-quality creative writing even in shorter form. Neat finding: when allowing an LLM to: (1) draft, (2) detect issues, (3) edit them through executable edits, then LLMs are capable of improving their writing!"
+            data-links-code="https://github.com/salesforce/creativity_eval/">
+        </article>
+
+        <article class="paper-entry" data-id="inksync" data-title="InkSync" data-venue="UIST2024"
+            data-url="https://arxiv.org/abs/2309.15337" data-parent="swipe"
+            data-indirect-connections="ai_writing_idiosyncracies"
+            data-coauthors="Jesse Vig, Marti A. Hearst, Caiming Xiong, Chien-Sheng Wu"
+            data-full-title="Beyond the Chat: Executable and Verifiable Text-Editing with LLMs"
+            data-summary="How do we imagine writing with an LLM should look like. We design the concept of 'executable edits' that an LLM-based system can propose, and design a framework to verify factual accuracy of these edits (Warn-Verify-Audit)."
+            data-links-demo_video="https://www.youtube.com/watch?v=q7lf5CIMyvE"
+            data-links-live_demo="https://inksync.salesforceresearch.ai/"
+            data-links-code="https://github.com/SalesforceAIResearch/inksync"
+            data-links-recorded_presentation="https://www.youtube.com/watch?v=3RMo1nWIqCY">
+        </article>
+
+        <article class="paper-entry" data-id="writing_quality_reward_models" data-title="Writing Quality Reward Models" data-venue="arXiv"
+            data-url="https://arxiv.org/abs/2504.07532" data-parent="ai_writing_idiosyncracies" data-is-left-child="1"
+            data-coauthors="Tuhin Chakrabarty, Chien-Sheng Wu"
+            data-full-title="AI-Slop to AI-Polish? Aligning Language Models through Edit-Based Writing Rewards and Test-time Computation"
+            data-summary="Work co-led with Tuhin Chakrabarty continuing our great CHI2025. In this work, we build out methods to evaluate *writing quality* in for fiction and non-fiction writing tasks. We release a model (WQRM) we believe is best-in-class at measuring writing quality, as confirmed by our benchmark results."
+            data-links-code="https://github.com/salesforce/creativity_eval/"
+            data-links-model="huggingface.co/models?search=wqrm"
+            data-links-data="https://github.com/salesforce/creativity_eval/tree/main/WritingRewards/WQ-benchmark-data">
+        </article>
+
+        <!-- ===== Summarization (2019-now) ===== -->
+        <article class="paper-entry" data-id="summaryloop" data-title="Summary Loop" data-venue="ACL2020"
+            data-url="https://arxiv.org/abs/2105.05361"
+            data-root-node="1" data-root-name="Summarization|2019-now" data-root-color="#FFE699"
+            data-indirect-connections="keepitsimple"
+            data-coauthors="Andrew Hsi, John Canny, Marti A. Hearst"
+            data-full-title="The Summary Loop: Learning to Write Abstractive Summaries Without Examples"
+            data-summary="My first foray into summarization! We designed an entirely unsupervised method for summarization that relied on RL optimization (before it was cool) to train a 'language model' (GPT2) to jointly optimize information coverage and fluency. Neat Idea: the most complex element to define was the Coverage scoring method, check it out in the paper."
+            data-links-video="https://slideslive.com/38929183/summary-loop-unsupervised-abstractive-summarization"
+            data-links-code="https://github.com/CannyLab/summary_loop"
+            data-links-models="https://huggingface.co/philippelaban/summary_loop46">
+        </article>
+
+        <article class="paper-entry" data-id="summac" data-title="SummaC" data-venue="TACL2021"
+            data-url="https://arxiv.org/abs/2111.09525" data-parent="summaryloop"
+            data-coauthors="Tobias Schnabel, Paul N. Bennett, Marti A. Hearst"
+            data-full-title="SummaC: Re-Visiting NLI-based Models for Inconsistency Detection in Summarization"
+            data-summary="First adventures with factuality/faithfulness/consistency in text generation and summarization. At the time, most of the work had shown NLI methods did not work reliably to detect factual errors in generated text, and relied instead on more complex QG/QA pipelines. The work shows that more modern NLI models, when used at the right granularity, are competitive and much faster to run. We released the two models and the benchmark we created (SummaC)."
+            data-links-video="https://aclanthology.org/2022.tacl-1.10.mp4"
+            data-links-code_data="https://github.com/tingofurro/summac">
+        </article>
+
+        <article class="paper-entry" data-id="summedits" data-title="SummEdits" data-venue="EMNLP2023"
+            data-url="https://arxiv.org/abs/2305.14540" data-parent="summac"
+            data-coauthors="Wojciech Kryściński, Divyansh Agarwal, Alexander R. Fabbri, Caiming Xiong, Shafiq Joty, Chien-Sheng Wu"
+            data-full-title="LLMs as Factual Reasoners: Insights from Existing Benchmarks and Beyond"
+            data-summary="First work leveraging LLMs (GPT-3.5-turbo)! Can we use an LLM as part of a benchmark creation process to lower the cost of data acquisition while maintaining quality. Neat Finding: we create a dataset for summary factual inconsistency detection that costs 20x less per sample with very high IAA. Most LLMs at the time struggled to beat near-random performance on SummEdits."
+            data-links-video="https://aclanthology.org/2023.emnlp-main.600.mp4"
+            data-links-data_hf="https://huggingface.co/datasets/Salesforce/summedits"
+            data-links-code="https://github.com/salesforce/factualNLG">
+        </article>
+
+        <article class="paper-entry" data-id="summary_of_a_haystack" data-title="Summary of a Haystack" data-venue="EMNLP2024"
+            data-url="https://arxiv.org/abs/2407.01370" data-parent="summedits" data-is-left-child="1"
+            data-coauthors="Alexander R. Fabbri, Caiming Xiong, Chien-Sheng Wu"
+            data-full-title="Summary of a Haystack: A Challenge to Long-Context LLMs and RAG Systems"
+            data-summary="How good are LLMs or RAG systems at dealing with long-context (~100k tokens) and precisely summarizing and citing back to relevant documents. Alex Fabbri and I very carefully synthesized Haystacks of documents to explore the subject. Neat Finding: in 2024, RAG vs. long-context LLMs is not a winner takes all (yet). RAGs are better when citation/attribution is important, whereas long-context single-step is more competitive when information (without citation) is desired."
+            data-links-data_hf="https://huggingface.co/datasets/Salesforce/summary-of-a-haystack"
+            data-links-code="https://github.com/salesforce/summary-of-a-haystack">
+        </article>
+
+        <article class="paper-entry" data-id="answer_engine_eval" data-title="Answer Engine Eval." data-venue="FAccT 2025"
+            data-url="https://arxiv.org/abs/2410.22349" data-parent="summary_of_a_haystack"
+            data-coauthors="Pranav Narayanan Venkit, Yilun Zhou, Yixin Mao, Chien-Sheng Wu"
+            data-full-title="Search Engines in an AI Era: The False Promise of Factual and Verifiable Source-Cited Responses"
+            data-summary="Work led by Pranav Venkit as an intern at Salesforce Research. Explored whether 'answer engines' (generative search engines, which are simply RAG-based summarization systems) capable of producing accurate and attributed answers to technical user queries. Neat Finding: the qualitative study led to a quantitative framework with ~8 metrics, most of which current answer engines struggle on."
+            data-links-code="https://github.com/SalesforceAIResearch/answer-engine-eval">
+        </article>
+
+        <article class="paper-entry" data-id="aggrefact" data-title="AggreFact" data-venue="ACL2023"
+            data-url="https://arxiv.org/abs/2205.12854" data-parent="summac"
+            data-coauthors="Liyan Tang, Tanya Goyal, Alexander R. Fabbri, Jiacheng Xu, Semih Yavuz, Wojciech Kryściński, Justin F. Rousseau, Greg Durrett"
+            data-full-title="Understanding Factual Errors in Summarization: Errors, Summarizers, Datasets, Error Detectors"
+            data-summary="Work led by Liyan Tang on creating a larger-scale benchmark for factuality in summarization (AggreFact) to better understand error types that occur across model generations. Neat Finding: the distribution of factual error types shifts with different generations of models. As generative models get better, the kinds of factual errors they make become more subtle... and more difficult to catch. (oh no!)"
+            data-links-video="https://aclanthology.org/2023.acl-long.650.mp4"
+            data-links-data="https://github.com/Liyan06/AggreFact">
+        </article>
+
+        <article class="paper-entry" data-id="minicheck" data-title="MiniCheck" data-venue="EMNLP2024"
+            data-url="https://arxiv.org/abs/2404.10774" data-parent="aggrefact"
+            data-indirect-connections="summedits, answer_engine_eval"
+            data-coauthors="Liyan Tang, Greg Durrett"
+            data-full-title="MiniCheck: Efficient Fact-Checking of LLMs on Grounding Documents"
+            data-summary="Work led by Liyan Tang. Very clever data synthesis process to create challenging (positive/negative) samples for factual inconsistency detection. When training a model on the synthetic data, we obtain a factual inconsistency checker as good as the top LLMs (Claude / GPT) but 300x cheaper to run!"
+            data-links-code="https://github.com/Liyan06/MiniCheck"
+            data-links-leaderboard="https://llm-aggrefact.github.io/"
+            data-links-model_hf="https://huggingface.co/bespokelabs/Bespoke-MiniCheck-7B"
+            data-links-data_hf="https://huggingface.co/datasets/lytang/LLM-AggreFact">
+        </article>
+
+        <!-- ===== Reading (2016-2023) ===== -->
+        <article class="paper-entry" data-id="newslens" data-title="NewsLens" data-venue="ACL2017 Workshop"
+            data-url="https://aclanthology.org/W17-2701.pdf"
+            data-root-node="1" data-root-name="Reading|2016-2023" data-root-color="#FA9189"
+            data-coauthors="Marti A. Hearst"
+            data-full-title="newsLens: building and visualizing long-ranging news stories"
+            data-summary="My first foray into news reading interfaces, presented at the News Workshop of ACL 2017. The work presents how a large-scale stream of news articles can be organized into evolving news timelines, how to name and visualize them.">
+        </article>
+
+        <article class="paper-entry" data-id="news_chatbot" data-title="News Chatbot" data-venue="ACL2020"
+            data-url="https://arxiv.org/abs/2105.05392" data-parent="newslens"
+            data-coauthors="John Canny, Marti A. Hearst"
+            data-full-title="What's The Latest? A Question-driven News Chatbot"
+            data-summary="For the NewsLens stories, what would it look like to 'chat' with a system about an evolving news story's that can have 1000+ articles (pre-ChatGPT !!). Neat Finding: if you recommend questions to users, they can have fairly long conversation, reading through more than an average article's length of content."
+            data-links-video="https://slideslive.com/38928615/whats-the-latest-a-questiondriven-news-chatbot">
+        </article>
+
+        <article class="paper-entry" data-id="newspod" data-title="Podcasts" data-venue="IUI2022"
+            data-url="https://arxiv.org/abs/2202.07146" data-parent="news_chatbot"
+            data-coauthors="Elicia Ye, Srujay Korlakunta, John Canny, Marti A. Hearst"
+            data-full-title="NewsPod: Automatic and Interactive News Podcasts"
+            data-summary="Taking Newslens and its chat to the next level: by exploring whether stories can be turned into conversational (multi-voice) and interactive (user can speak) podcasts. Neat Finding: using multiple voices when synthesizing speech lowers user fatigue, and adding a Q&A format reduces monotonicity. Users are sometimes willing to jump in and ask their own questions."
+            data-links-live_demo="https://newspod.github.io/"
+            data-links-interview_apple_podcast="https://podcasts.apple.com/ca/podcast/like-your-new-best-friend-an-ai-chatbot/id1639175294?i=1000575694297">
+        </article>
+
+        <article class="paper-entry" data-id="news_headline_grouping" data-title="Headline Grouping" data-venue="NAACL2021"
+            data-url="https://arxiv.org/abs/2105.05391" data-parent="news_chatbot"
+            data-coauthors="Marti A. Hearst"
+            data-full-title="News Headline Grouping as a Challenging NLU Task"
+            data-summary="Focused work on a challenging NLP task related to news headline writing. Can we automatically detect when two headlines relate to the same real-world event? It happens to be challenging because of the complex process involved in crafting news headlines."
+            data-links-code="https://github.com/tingofurro/headline_grouping"
+            data-links-data_hf="https://huggingface.co/philippelaban/headline_grouping"
+            data-links-video="https://aclanthology.org/2021.naacl-main.255.mp4">
+        </article>
+
+        <article class="paper-entry" data-id="discord_questions" data-title="Discord Questions" data-venue="EMNLP2022"
+            data-url="https://arxiv.org/abs/2211.05007" data-parent="news_headline_grouping"
+            data-coauthors="Chien-Sheng Wu, Lidiya Murakhovs'ka, Xiang 'Anthony' Chen, Caiming Xiong"
+            data-full-title="Discord Questions: A Computational Approach To Diversity Analysis in News Coverage"
+            data-summary="Given a set of news articles (and/or documents) that cover a common topic (news event), can we find key questions that surface when the sources agree, or disagree. Can these be used to surface the diversity in coverage that exists in the corpus? Neat Finding: even pre-ChatGPT, this was possible: over-generate 100+ questions, and filter out to the few that fit strict criteria."
+            data-links-video="https://aclanthology.org/2022.findings-emnlp.380.mp4"
+            data-links-code="https://github.com/salesforce/discord_questions"
+            data-links-data="https://huggingface.co/Salesforce/qa_consolidation"
+            data-links-models="https://huggingface.co/Salesforce/discord_qg">
+        </article>
+
+        <article class="paper-entry" data-id="assembly" data-title="Assembly" data-venue="CHI2023"
+            data-url="https://arxiv.org/abs/2302.08997" data-parent="discord_questions"
+            data-coauthors="Chien-Sheng Wu, Lidiya Murakhovs'ka, Xiang 'Anthony' Chen, Caiming Xiong"
+            data-full-title="Designing and Evaluating Interfaces that Highlight News Coverage Diversity Using Discord Questions"
+            data-summary="Once we have Discord Questions, how do we use them in practice in news reading interfaces, both for journalism professionals, and everyday newsreaders (the 'Assembly' interfaces). Neat Finding: we showed in a study with 100+ participants that the annotated article interface leads to better access to coverage diversity, while not being more complicated to use (success!)."
+            data-links-video="https://www.youtube.com/watch?v=s2mBv3xD7Lg">
+        </article>
+
+        <article class="paper-entry" data-id="diverse_summ" data-title="DiverseSumm" data-venue="NAACL2024"
+            data-url="https://arxiv.org/abs/2309.09369" data-parent="assembly"
+            data-indirect-connections="summary_of_a_haystack"
+            data-coauthors="Kung-Hsiang Huang, Alexander R. Fabbri, Prafulla Kumar Choubey, Caiming Xiong, Chien-Sheng Wu"
+            data-full-title="Embrace Divergence for Richer Insights: A Multi-document Summarization Benchmark and a Case Study on Summarizing Diverse Information from News Articles"
+            data-summary="Follow-up of Discord Questions and Assembly. Once we've found a topic of discord within a corpus of documents, how good are LLMs at describing this diversity when they summarize the information. Neat finding: LLMs are not so good at nuanced summarization, and tend to focus on information either at the top/bottom of their context window (arbitrary), or on predominantly represent opinion. Work led by Steeve Huang when he was an intern at Salesforce Research!"
+            data-links-code_data="https://github.com/salesforce/DiverseSumm">
+        </article>
+    </details>
+
+    <script src="garden.js?v=3"></script>
     <script>
-        var papers = [
-        // {"id": "shuffle_test", "title": "Coherence: Shuffle Test", "venue": "ACL2021", "url": "https://arxiv.org/abs/2107.03448", "root_node": 1, "root_name": "Interacting\n2023-now", "root_color": "#D1BDFF", "coauthors": ["Luke Dai", "Lucas Bandarkar", "Marti A. Hearst"], "full_title": "Can Transformer Models Measure Coherence In Text? Re-Thinking the Shuffle Test", "summary": "Basic experiment that shows that a commonly used test to measure coherence in text (the Shuffle test) is saturated and ineffective, and encouraging the community to use more complex forms of the test (k-block Shuffle test).", "additional_links": {"code": "https://github.com/tingofurro/shuffle_test", "video": "https://aclanthology.org/2021.acl-short.134.mp4"}},
-        // {"id": "quiz_design", "title": "QG: Quiz Design", "venue": "NAACL2022", "url": "https://arxiv.org/abs/2205.01730", "parent": "shuffle_test", "coauthors": ["Chien-Sheng Wu", "Lidiya Murakhovs'ka", "Wenhao Liu", "Caiming Xiong"], "full_title": "Quiz Design Task: Helping Teachers Create Quizzes with Automated Question Generation", "summary": "How do we evaluate question generation models (LLMs that generate questions). We recruited teachers/educators with experience designing exams, and asked them to use the QG models, finding that they tend to have strong agreement on questions they would select for an exam.", "additional_links": {"code": "https://github.com/salesforce/QGen"}},
-        // {"id": "nnd", "title": "Near-Negative Distinction", "venue": "EMNLP2022", "url": "https://arxiv.org/abs/2205.06871", "parent": "quiz_design", "coauthors": ["Chien-Sheng Wu", "Caiming Xiong"], "full_title": "Near-Negative Distinction: Giving a Second Life to Human Evaluation Datasets", "summary": "A proposed method to improve evaluation methodology of generative models in cases where multiple references/candidates have been annotated.", "additional_links": {"code": "https://github.com/salesforce/nnd_evaluation"}},
-        {"id": "flipflop", "title": "FlipFlop Experiment", "venue": "arXiv", "url": "https://arxiv.org/abs/2311.08596", "root_node": 1, "root_name": "Interacting\n2023-now", "root_color": "#D1BDFF", "coauthors": ["Lidiya Murakhovs'ka", "Caiming Xiong", "Chien-Sheng Wu"], "full_title": "Are You Sure? Challenging LLMs Leads to Performance Drops in The FlipFlop Experiment", "summary": "What happens when you give an LLM a classification task, it gets it right, and you ask it `Are you sure?`. Universally, LLMs tend to flip their answer: favoring to a superficial agreement with the user over being accurate. We connect the FlipFlop effect with the connect of sycophancy in LLMs, and show that finetuning is not a panacea to cure the issue, although it helps a bit."},
-        {"id": "lost_in_conv", "title": "Lost in Conversation", "venue": "arXiv", "url": "https://arxiv.org/abs/2505.06120", "parent": "flipflop", "coauthors": ["Hiroaki Hayashi", "Yingbo Zhou", "Jennifer Neville"], "full_title": "LLMs Get Lost In Multi-Turn Conversation", "summary": "A large-scale simulation experiment with 15 LLMs. We show that on the exact same set of tasks, model performance degrades (39%!) in multi-turn underspecified conversation, compared to single-turn, fully-specified conversations. We find that this is because when models take a wrong turn, they get lost and do not recover (reliability issue rather than aptitude).", "additional_links": {"code": "https://github.com/microsoft/lost_in_conversation", "data": "https://huggingface.co/datasets/microsoft/lost_in_conversation"}},
-        {"id": "userlm", "title": "UserLM", "venue": "arXiv", "url": "https://arxiv.org/abs/2510.06552", "coauthors": ["Tarek Naous", "Wei Xu", "Jennifer Neville"], "full_title": "Flipping the Dialogue: Training and Evaluating User Language Models", "summary": "We train an 8b LLM specifically to simulate the user role in user-AI conversations. We find that this model is much more diverse in natural in simulating users than prompting assistant models (the standard approach). We argue for the development of better user-simulating models, as we show assistant models are limited in their simulation capabilities.", "parent": "lost_in_conv", "additional_links": {"model": "https://huggingface.co/microsoft/UserLM-8b"}},
-
-        {"id": "keepitsimple", "title": "Keep It Simple", "venue": "ACL2021", "url": "https://arxiv.org/abs/2107.03444", "root_node": 1, "root_name": "Writing/Editing\n2020-now", "root_color": "#B3F5BC", "coauthors": ["Tobias Schnabel", "Paul Bennett", "Marti A. Hearst"], "full_title": "Keep it Simple: Unsupervised Simplification of Multi-Paragraph Text", "summary": "First baby steps in the field of simplification (a sister task to summarization). We approached it in an entirely unsupervised way (a la Summary Loop), by crafting rewards for fluency, relevance, and simplicity, and optimizing through RL. Neat Finding: an algorithmic improvement to the popular SCST algorithm (k-SCST) which yielded much more stable training, and better models. Also: a focus on paragraph-level (rather than sentence-level) simplification, which was not so common at the time!", "additional_links": {"code": "https://github.com/tingofurro/keep_it_simple", "video": "https://aclanthology.org/2021.acl-long.498.mp4", "model": "https://huggingface.co/philippelaban/keep_it_simple"}},
-        {"id": "swipe", "title": "SWiPE", "venue": "ACL2023", "url": "https://arxiv.org/abs/2305.19204", "parent": "keepitsimple", "coauthors": ["Jesse Vig", "Wojciech Kryscinski", "Caiming Xiong", "Chien-Sheng Wu"], "full_title": "SWiPE: A Dataset for Document-Level Simplification of Wikipedia Pages", "summary": "Improved the extraction process of simplification document pairs from Simple Wikipedia, showing that Swiki is a great resource to study the simplification process. Prior work had mostly disregarded SWiki in favor of less publicly available datasets such as Newsela.", "additional_links": {"code": "https://github.com/salesforce/simplification"}},
-        {"id": "art_or_artifice", "title": "Art or Artifice", "venue": "CHI2024", "url": "https://arxiv.org/abs/2309.14556", "parent": "swipe", "coauthors": ["Tuhin Chakrabarty", "Chien-Sheng Wu"], "full_title": "Art or Artifice? Large Language Models and the False Promise of Creativity", "summary": "Work led by Tuhin Chakrabarty as an intern at Salesforce Research. Are LLMs capable of high-quality creative fictional writing, to the level of short-stories published in the New Yorker. We designed a methodology to evaluate story quality (through rigorous manual evaluation by expert writers), and found a very large gap between professionally-written and AI-generated stories. Neat Finding: at the time, LLMs were not capable of even judging which stories were better than others, and tended to favor more bland AI-like writing.", "additional_links": {"code": "https://github.com/salesforce/creativity_eval", "data (hf)": "https://huggingface.co/datasets/Salesforce/ttcw_creativity_eval", "video": "https://dl.acm.org/doi/10.1145/3613904.3642731"}},
-        {"id": "ai_writing_idiosyncracies", "title": "Writing Idiosyncracies", "venue": "CHI2025", "url": "https://arxiv.org/abs/2409.14509", "is_left_child": 1, "parent": "art_or_artifice", "coauthors": ["Tuhin Chakrabarty", "Chien-Sheng Wu"], "full_title": "Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits", "summary": "Work led by Tuhin at Salesforce Research. Following up on Art or Artifice. Lowering our expectation from a story (1000+ words) to a single paragraph (100-200 words). We find in a controlled experiment that LLMs still struggle to generate high-quality creative writing even in shorter form. Neat finding: when allowing an LLM to: (1) draft, (2) detect issues, (3) edit them through executable edits, then LLMs are capable of <b>improving</b> their writing!", "additional_links": {"code": "https://github.com/salesforce/creativity_eval/"}},
-        {"id": "inksync", "title": "InkSync", "venue": "UIST2024", "url": "https://arxiv.org/abs/2309.15337", "indirect_connections": ["ai_writing_idiosyncracies"], "parent": "swipe", "coauthors": ["Jesse Vig", "Marti A. Hearst", "Caiming Xiong", "Chien-Sheng Wu"], "full_title": "Beyond the Chat: Executable and Verifiable Text-Editing with LLMs", "summary": "How do we imagine writing with an LLM should look like. We design the concept of 'executable edits' that an LLM-based system can propose, and design a framework to verify factual accuracy of these edits (Warn-Verify-Audit).", "additional_links": {"demo video": "https://www.youtube.com/watch?v=q7lf5CIMyvE", "live demo": "https://inksync.salesforceresearch.ai/", "code": "https://github.com/SalesforceAIResearch/inksync", "recorded presentation": "https://www.youtube.com/watch?v=3RMo1nWIqCY"}},
-
-        {"id": "writing_quality_reward_models", "title": "Writing Quality Reward Models", "venue": "arXiv", "url": "https://arxiv.org/abs/2504.07532", "is_left_child": 1, "parent": "ai_writing_idiosyncracies", "coauthors": ["Tuhin Chakrabarty", "Chien-Sheng Wu"], "full_title": "AI-Slop to AI-Polish? Aligning Language Models through Edit-Based Writing Rewards and Test-time Computation", "summary": "Work co-led with Tuhin Chakrabarty continuing our great CHI2025. In this work, we build out methods to evaluate *writing quality* in for fiction and non-fiction writing tasks. We release a model (WQRM) we believe is best-in-class at measuring writing quality, as confirmed by our benchmark results.", "additional_links": {"code": "https://github.com/salesforce/creativity_eval/", "model": "huggingface.co/models?search=wqrm", "data": "https://github.com/salesforce/creativity_eval/tree/main/WritingRewards/WQ-benchmark-data"}},
-
-        {"id": "summaryloop", "title": "Summary Loop", "venue": "ACL2020", "url": "https://arxiv.org/abs/2105.05361", "root_node": 1, "root_name": "Summarization\n2019-now", "root_color": "#FFE699", "coauthors": ["Andrew Hsi", "John Canny", "Marti A. Hearst"], "full_title": "The Summary Loop: Learning to Write Abstractive Summaries Without Examples", "summary": "My first foray into summarization! We designed an entirely unsupervised method for summarization that relied on RL optimization (before it was cool) to train a 'language model' (GPT2) to jointly optimize information coverage & fluency. Neat Idea: the most complex element to define was the Coverage scoring method, check it out in the paper.", "indirect_connections": ["keepitsimple"], "additional_links": {"video": "https://slideslive.com/38929183/summary-loop-unsupervised-abstractive-summarization", "code": "https://github.com/CannyLab/summary_loop", "models": "https://huggingface.co/philippelaban/summary_loop46"}},
-        {"id": "summac", "title": "SummaC", "venue": "TACL2021", "url": "https://arxiv.org/abs/2111.09525", "parent": "summaryloop", "coauthors": ["Tobias Schnabel", "Paul N. Bennett", "Marti A. Hearst"], "full_title": "SummaC: Re-Visiting NLI-based Models for Inconsistency Detection in Summarization", "summary": "First adventures with factuality/faithfulness/consistency in text generation & summarization. At the time, most of the work had shown NLI methods did not work reliably to detect factual errors in generated text, and relied instead on more complex QG/QA pipelines. The work shows that more modern NLI models, when used at the right granularity, are competitive and much faster to run. We released the two models & the benchmark we created (SummaC).", "additional_links": {"video": "https://aclanthology.org/2022.tacl-1.10.mp4", "code/data": "https://github.com/tingofurro/summac"}},
-
-
-        {"id": "summedits", "title": "SummEdits", "venue": "EMNLP2023", "url": "https://arxiv.org/abs/2305.14540", "parent": "summac", "coauthors": ["Wojciech Kryściński", "Divyansh Agarwal", "Alexander R. Fabbri", "Caiming Xiong", "Shafiq Joty", "Chien-Sheng Wu"], "full_title": "LLMs as Factual Reasoners: Insights from Existing Benchmarks and Beyond", "summary": "First work leveraging LLMs (GPT-3.5-turbo)! Can we use an LLM as part of a benchmark creation process to lower the cost of data acquisition while maintaining quality. Neat Finding: we create a dataset for summary factual inconsistency detection that costs 20x less per sample with very high IAA. Most LLMs at the time struggled to beat near-random performance on SummEdits.", "additional_links": {"video": "https://aclanthology.org/2023.emnlp-main.600.mp4", "data (hf)": "https://huggingface.co/datasets/Salesforce/summedits", "code": "https://github.com/salesforce/factualNLG"}},
-        {"id": "summary_of_a_haystack", "title": "Summary of a Haystack", "is_left_child": 1, "venue": "EMNLP2024", "url": "https://arxiv.org/abs/2407.01370", "parent": "summedits", "coauthors": ["Alexander R. Fabbri", "Caiming Xiong", "Chien-Sheng Wu"], "full_title": "Summary of a Haystack: A Challenge to Long-Context LLMs and RAG Systems", "summary": "How good are LLMs or RAG systems at dealing with long-context (~100k tokens) and precisely summarizing and citing back to relevant documents. Alex Fabbri & I very carefully synthesized Haystacks of documents to explore the subject. Neat Finding: in 2024, RAG vs. long-context LLMs is not a winner takes all (yet). RAGs are better when citation/attribution is important, whereas long-context single-step is more competitive when information (without citation) is desired.", "additional_links": {"data (hf)": "https://huggingface.co/datasets/Salesforce/summary-of-a-haystack", "code": "https://github.com/salesforce/summary-of-a-haystack"}},
-        {"id": "answer_engine_eval", "title": "Answer Engine Eval.", "venue": "FAccT 2025", "url": "https://arxiv.org/abs/2410.22349", "parent": "summary_of_a_haystack", "coauthors": ["Pranav Narayanan Venkit", "Yilun Zhou", "Yixin Mao", "Chien-Sheng Wu"], "full_title": "Search Engines in an AI Era: The False Promise of Factual and Verifiable Source-Cited Responses", "summary": "Work led by Pranav Venkit as an intern at Salesforce Research. Explored whether 'answer engines' (generative search engines, which are simply RAG-based summarization systems) capbale of producing accurate and attributed answers to technical user queries. Neat Finding: the qualitative study led to a quantitative framework with ~8 metrics, most of which current answer engines struggle on.", "additional_links": {"code": "https://github.com/SalesforceAIResearch/answer-engine-eval"}},
-
-
-        {"id": "aggrefact", "title": "AggreFact", "venue": "ACL2023", "url": "https://arxiv.org/abs/2205.12854", "parent": "summac", "coauthors": ["Liyan Tang", "Tanya Goyal", "Alexander R. Fabbri", "Jiacheng Xu", "Semih Yavuz", "Wojciech Kryściński", "Justin F. Rousseau", "Greg Durrett"], "full_title": "Understanding Factual Errors in Summarization: Errors, Summarizers, Datasets, Error Detectors", "summary": "Work led by Liyan Tang on creating a larger-scale benchmark for factuality in summarization (AggreFact) to better understand error types that occur across model generations. Neat Finding: the distribution of factual error types shifts with different generations of models. As generative models get better, the kinds of factual errors they make become more subtle... and more difficult to catch. (oh no!)", "additional_links": {"video": "https://aclanthology.org/2023.acl-long.650.mp4", "data": "https://github.com/Liyan06/AggreFact"}},
-
-        {"id": "minicheck", "title": "MiniCheck", "venue": "EMNLP2024", "url": "https://arxiv.org/abs/2404.10774", "parent": "aggrefact", "indirect_connections": ["summedits", "answer_engine_eval"], "coauthors": ["Liyan Tang", "Greg Durrett"], "full_title": "MiniCheck: Efficient Fact-Checking of LLMs on Grounding Documents", "summary": "Work led by Liyan Tang. Very clever data synthesis process to create challenging (positive/negative) samples for factual inconsistency detection. When training a model on the synthetic data, we obtain a factual inconsistency checker as good as the top LLMs (Claude / GPT) but 300x cheaper to run!", "additional_links": {"code": "https://github.com/Liyan06/MiniCheck", "leaderboard": "https://llm-aggrefact.github.io/", "model (hf)": "https://huggingface.co/bespokelabs/Bespoke-MiniCheck-7B", "data (hf)": "https://huggingface.co/datasets/lytang/LLM-AggreFact"}},
-
-        {"id": "newslens", "title": "NewsLens", "venue": "ACL2017 Workshop", "url": "https://aclanthology.org/W17-2701.pdf", "root_node": 1, "root_name": "Reading\n2016-2023", "root_color": "#FA9189", "coauthors": ["Marti A. Hearst"], "full_title": "newsLens: building and visualizing long-ranging news stories", "summary": "My first foray into news reading interfaces, presented at the News Workshop of ACL 2017. The work presents how a large-scale stream of news articles can be organized into evolving news timelines, how to name and visualize them."},
-        {"id": "news_chatbot", "title": "News Chatbot", "venue": "ACL2020", "url": "https://arxiv.org/abs/2105.05392", "parent": "newslens", "coauthors": ["John Canny", "Marti A. Hearst"], "full_title": "What's The Latest? A Question-driven News Chatbot", "summary": "For the NewsLens stories, what would it look like to 'chat' with a system about an evolving news story's that can have 1000+ articles (pre-ChatGPT !!). Neat Finding: if you recommend questions to users, they can have fairly long conversation, reading through more than an average article's length of content.", "additional_links": {"video": "https://slideslive.com/38928615/whats-the-latest-a-questiondriven-news-chatbot"}},
-        {"id": "newspod", "title": "Podcasts", "venue": "IUI2022", "url": "https://arxiv.org/abs/2202.07146", "parent": "news_chatbot", "coauthors": ["Elicia Ye", "Srujay Korlakunta", "John Canny", "Marti A. Hearst"], "full_title": "NewsPod: Automatic and Interactive News Podcasts", "summary": "Taking Newslens and its chat to the next level: by exploring whether stoires can be turned into conversational (multi-voice) and interactive (user can speak) podcasts. Neat Finding: using multiple voices when synthesizing speech lowers user fatigue, and adding a Q&A format reduces monotonicity. Users are sometimes willing to jump in and ask their own questions.", "additional_links": {"live_demo": "https://newspod.github.io/", "Interview (Apple Podcast)": "https://podcasts.apple.com/ca/podcast/like-your-new-best-friend-an-ai-chatbot/id1639175294?i=1000575694297"}},
-        {"id": "news_headline_grouping", "title": "Headline Grouping", "venue": "NAACL2021", "url": "https://arxiv.org/abs/2105.05391", "parent": "news_chatbot", "coauthors": ["Marti A. Hearst"], "full_title": "News Headline Grouping as a Challenging NLU Task", "summary": "Focused work on a challenging NLP task related to news headline writing. Can we automatically detect when two headlines relate to the same real-world event? It happens to be challenging because of the complex process involved in crafting news headlines.", "additional_links": {"code": "https://github.com/tingofurro/headline_grouping", "data (HF)": "https://huggingface.co/philippelaban/headline_grouping", "video": "https://aclanthology.org/2021.naacl-main.255.mp4"}},
-        {"id": "discord_questions", "title": "Discord Questions", "venue": "EMNLP2022", "url": "https://arxiv.org/abs/2211.05007", "parent": "news_headline_grouping", "coauthors": ["Chien-Sheng Wu", "Lidiya Murakhovs'ka", "Xiang 'Anthony' Chen", "Caiming Xiong"], "full_title": "Discord Questions: A Computational Approach To Diversity Analysis in News Coverage", "summary": "Given a set of news articles (and/or documents) that cover a common topic (news event), can we find key questions that surface when the sources agree, or disagree. Can these be used to surface the diversity in coverage that exists in the corpus? Neat Finding: even pre-ChatGPT, this was possible: over-generate 100+ questions, and filter out to the few that fit strict criteria.", "additional_links": {"video": "https://aclanthology.org/2022.findings-emnlp.380.mp4", "code": "https://github.com/salesforce/discord_questions", "data": "https://huggingface.co/Salesforce/qa_consolidation", "models": "https://huggingface.co/Salesforce/discord_qg"}},
-        {"id": "assembly", "title": "Assembly", "venue": "CHI2023", "url": "https://arxiv.org/abs/2302.08997", "parent": "discord_questions", "coauthors": ["Chien-Sheng Wu", "Lidiya Murakhovs'ka", "Xiang 'Anthony' Chen", "Caiming Xiong"], "full_title": "Designing and Evaluating Interfaces that Highlight News Coverage Diversity Using Discord Questions", "summary": "Once we have Discord Questions, how do we use them in practice in news reading interfaces, both for journalism professionals, and everyday newsreaders (the 'Assembly' interfaces). Neat Finding: we showed in a study with 100+ participants that the annotated article interface leads to better access to coverage diversity, while not being more complicated to use (success!).", "additional_links": {"video": "https://www.youtube.com/watch?v=s2mBv3xD7Lg"}},
-        {"id": "diverse_summ", "title": "DiverseSumm", "venue": "NAACL2024", "url": "https://arxiv.org/abs/2309.09369", "indirect_connections": ["summary_of_a_haystack"], "parent": "assembly", "coauthors": ["Kung-Hsiang Huang", "Alexander R. Fabbri", "Prafulla Kumar Choubey", "Caiming Xiong", "Chien-Sheng Wu"], "full_title": "Embrace Divergence for Richer Insights: A Multi-document Summarization Benchmark and a Case Study on Summarizing Diverse Information from News Articles", "summary": "Follow-up of Discord Questions & Assembly. Once we've found a topic of discord within a corpus of documents, how good are LLMs at describing this diversity when they summarize the information. Neat finding: LLMs are not so good at nuanced summarization, and tend to focus on information either at the top/bottom of their context window (arbitrary), or on predominantly represent opinion. Work led by Steeve Huang when he was an intern at Salesforce Research!", "additional_links": {"code/data": "https://github.com/salesforce/DiverseSumm"}}
-    ]
+        // Read papers from HTML data attributes
+        var papers = [];
+        $('#paper_data .paper-entry').each(function() {
+            var $el = $(this);
+            var paper = {
+                id: $el.data('id'),
+                title: $el.data('title'),
+                venue: $el.data('venue'),
+                url: $el.data('url'),
+                coauthors: $el.data('coauthors') ? $el.data('coauthors').split(', ') : [],
+                full_title: $el.data('full-title'),
+                summary: $el.data('summary')
+            };
+            if ($el.data('root-node')) { paper.root_node = 1; paper.root_name = ($el.data('root-name') || '').replace(/\|/g, '\n'); paper.root_color = $el.data('root-color'); }
+            if ($el.data('parent')) { paper.parent = $el.data('parent'); }
+            if ($el.data('is-left-child')) { paper.is_left_child = 1; }
+            if ($el.data('indirect-connections')) {
+                paper.indirect_connections = $el.data('indirect-connections').split(', ');
+            }
+            // Collect additional links from data-links-* attributes
+            var additional_links = {};
+            $.each(this.attributes, function() {
+                if (this.name.startsWith('data-links-')) {
+                    var key = this.name.replace('data-links-', '').replace(/_/g, ' ');
+                    additional_links[key] = this.value;
+                }
+            });
+            if (Object.keys(additional_links).length > 0) { paper.additional_links = additional_links; }
+            papers.push(paper);
+        });
+        // Find the latest paper id
+        var latest_id = null;
+        $('#paper_data .paper-entry[data-latest]').each(function() { latest_id = $(this).data('id'); });
 
         build_garden(papers);
+
+        // Add garden sign/stake next to the latest flower
+        if (latest_id && flower_positions[latest_id]) {
+            var pos = flower_positions[latest_id];
+            var sign_g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            // Position below the label text (to the right of flower, under "arXiv")
+            var sx = pos.x - 75, sy = pos.y + garden_height + 28;
+            // Sign board
+            var board = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            board.setAttribute('x', sx - 28); board.setAttribute('y', sy - 1);
+            board.setAttribute('width', '75'); board.setAttribute('height', '16');
+            board.setAttribute('rx', '2'); board.setAttribute('ry', '2');
+            board.setAttribute('fill', '#d4a843');
+            board.setAttribute('stroke', '#8B6914');
+            board.setAttribute('stroke-width', '0.8');
+            // Text on the sign
+            var sign_text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            sign_text.setAttribute('x', sx + 8);
+            sign_text.setAttribute('y', sy + 11);
+            sign_text.setAttribute('text-anchor', 'middle');
+            sign_text.setAttribute('fill', '#4a3000');
+            sign_text.setAttribute('font-size', '9');
+            sign_text.setAttribute('font-weight', '500');
+            sign_text.setAttribute('font-family', 'Roboto, sans-serif');
+            sign_text.textContent = '\u{1F331} Just planted!';
+            sign_g.appendChild(board);
+            sign_g.appendChild(sign_text);
+            sign_g.setAttribute('class', 'latest-sign');
+            sign_g.setAttribute('style', 'cursor:pointer');
+            sign_g.setAttribute('onclick', "open_paper('" + latest_id + "')");
+            $('#garden').append(sign_g);
+
+            // Add dewdrops around the latest flower
+            var dew_g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            dew_g.setAttribute('class', 'dew-drops');
+            var fx = pos.x, fy = pos.y + garden_height;
+            var drops = [
+                {dx: 10, dy: 10, r: 3}
+            ];
+            drops.forEach(function(d) {
+                var drop = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                drop.setAttribute('cx', fx + d.dx);
+                drop.setAttribute('cy', fy + d.dy);
+                drop.setAttribute('r', d.r);
+                drop.setAttribute('fill', 'url(#dew_gradient)');
+                drop.setAttribute('stroke', 'rgba(255,255,255,0.6)');
+                drop.setAttribute('stroke-width', '0.5');
+                // White specular highlight
+                var spec = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                spec.setAttribute('cx', fx + d.dx - d.r * 0.25);
+                spec.setAttribute('cy', fy + d.dy - d.r * 0.3);
+                spec.setAttribute('r', d.r * 0.35);
+                spec.setAttribute('fill', 'rgba(255,255,255,0.85)');
+                dew_g.appendChild(drop);
+                dew_g.appendChild(spec);
+            });
+            $('#garden').append(dew_g);
+        }
+
+        // Generate JSON-LD structured data from the same HTML source
+        var ldItems = papers.map(function(p) {
+            var authors = [{"@type": "Person", "name": "Philippe Laban"}];
+            p.coauthors.forEach(function(c) { authors.push({"@type": "Person", "name": c}); });
+            return {"@type": "ScholarlyArticle", "name": p.full_title, "url": p.url, "author": authors};
+        });
+        var ldScript = document.createElement('script');
+        ldScript.type = 'application/ld+json';
+        ldScript.text = JSON.stringify({"@context": "https://schema.org", "@type": "ItemList", "name": "Philippe Laban's Research Publications", "itemListElement": ldItems});
+        document.head.appendChild(ldScript);
     </script>
 
 </body>

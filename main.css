@@ -5,6 +5,7 @@ body {
     font-family: 'Roboto';
     font-size: 18px;
     padding-bottom: 100px;
+    background-color: #fafaf8;
 }
 a {
     color: #2a7ae2;
@@ -30,20 +31,30 @@ a:hover {
     width: 100%;
     margin: 0px 0px;
     border-radius: 50%;
-    border: 3px solid #666;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 #name {
     font-size: 48px;
     font-weight: 500;
     margin-bottom: 10px;
+    color: #213269;
+    letter-spacing: 1px;
 }
 #right_block a {
     color: #2a7ae2;
     text-decoration: none;
+    display: inline-block;
+    padding: 3px 10px;
+    margin: 2px 0;
+    border-radius: 14px;
+    font-size: 15px;
+    transition: background-color 0.2s;
 }
 #right_block a:hover {
-    color: #333333;
-    text-decoration: underline;
+    background-color: #eef2fa;
+    color: #213269;
+    text-decoration: none;
 }
 #first_block {
     font-size: 18px;
@@ -87,17 +98,69 @@ a:hover {
 }
 .section {
     width: 800px;
-    max-width: 100%;
+    max-width: calc(100% - 40px);
     margin: 20px auto;
     margin-top: 40px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 24px 28px;
+    border-left: 3px solid #b8c8e8;
 }
 .section_title {
-    font-size: 28px;
-    font-weight: 300;
-    margin: 10px 0px;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 0 12px 0;
+    color: #213269;
 }
 .section li {
     margin-bottom: 10px;
+}
+/* Publication list from paper data */
+#paper_data {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+#paper_data > summary {
+    font-size: 20px;
+    font-weight: 400;
+    color: #7a8aaa;
+    cursor: pointer;
+    padding: 8px 0;
+    list-style: none;
+    user-select: none;
+}
+#paper_data > summary::-webkit-details-marker { display: none; }
+#paper_data > summary::before {
+    content: '▸ ';
+    font-size: 16px;
+}
+#paper_data[open] > summary::before {
+    content: '▾ ';
+}
+#paper_data > summary:hover {
+    color: #213269;
+}
+.paper-entry {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.paper-entry:last-child {
+    border-bottom: none;
+}
+.paper-entry::before {
+    content: attr(data-full-title);
+    font-weight: 500;
+    font-size: 16px;
+    color: #333;
+}
+.paper-entry::after {
+    content: ' — ' attr(data-venue) ' — ' attr(data-coauthors);
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
 }
 @media (max-width: 768px) {
     #name {

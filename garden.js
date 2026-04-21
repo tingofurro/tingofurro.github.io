@@ -15,9 +15,10 @@ var root_offset = 60;
 var stem_height = 80;
 
 const waveWidth = 150, wave_offset = 80, waveHeight = 50;
-const cloudWidth = 75, cloudHeight = 30, cloud_offset = 0;
+const cloudWidth = 75, cloudHeight = 30, cloud_offset = 40;
 var research_garden = [];
 var id2paper = {};
+var garden_x_offset = 0;
 
 function build_garden(papers) {
     research_garden = [];
@@ -37,7 +38,10 @@ function build_garden(papers) {
         }
     }
 
-    var garden_width = plantWidth*research_garden.length+100;
+    var content_width = plantWidth*research_garden.length+100;
+    var viewport_width = $(window).width();
+    var garden_width = Math.max(content_width, viewport_width);
+    garden_x_offset = (garden_width - content_width) / 2;
     $('#garden').width(garden_width).height(garden_height);
     $('#garden_container'); // .width(garden_width).height
     
@@ -85,10 +89,10 @@ function get_whiter_color(color, factor) {
     var r = parseInt(color.slice(1, 3), 16);
     var g = parseInt(color.slice(3, 5), 16);
     var b = parseInt(color.slice(5, 7), 16);
-    r = Math.min(255, r + factor);
-    g = Math.min(255, g + factor);
-    b = Math.min(255, b + factor);
-    return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    r = Math.min(255, Math.max(0, r + factor));
+    g = Math.min(255, Math.max(0, g + factor));
+    b = Math.min(255, Math.max(0, b + factor));
+    return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
 }
 function drawPaperTree(parentElement, paper, x_offset, y_offset, plant_x_pos, plant_index) {
     flower_positions[paper.id] = {x: x_offset+plant_x_pos, y: y_offset};
@@ -96,8 +100,7 @@ function drawPaperTree(parentElement, paper, x_offset, y_offset, plant_x_pos, pl
     paper.flower_color = parentElement.flower_color;            
     var flower_class = `plant_${plant_index}`;
     
-    var whiter_color = get_whiter_color(paper.flower_color, -30);
-    var additional_css = `.${flower_class} {fill: ${whiter_color};} .flower:hover .${flower_class} {fill: ${paper.flower_color};}`;
+    var additional_css = `.${flower_class} {fill: url(#grad_${flower_class});} .flower:hover .${flower_class} {fill: url(#grad_${flower_class}_hover);}`;
 
     $('#flower_css').append(additional_css);
     // Create flower
@@ -186,6 +189,7 @@ function open_paper(paper_id) {
     // var paper = id2paper[paper_id];
     // window.open(paper.url, '_blank');
     // instead of that, we're going to open a centered modal with some info about the paper
+    $('#paper_modal_backdrop').fadeIn(200);
     $('#paper_modal').fadeIn(200);
     $('#paper_modal_title').text(id2paper[paper_id].full_title);
     $('#paper_modal_venue').text("— " + id2paper[paper_id].venue);
@@ -210,10 +214,54 @@ function bringFlowersToFront() {
 function renderGarden() {
     var garden_width = $('#garden').width();
     
-    // Add a group for indirect connections at the start
-    const indirectConnectionsGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    indirectConnectionsGroup.setAttribute("class", "indirect-connections-group");
-    $('#garden').append(indirectConnectionsGroup);
+    // Add SVG defs for gradients and filters
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    defs.innerHTML = `
+        <linearGradient id="sky_gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d4e4f7"/>
+            <stop offset="100%" stop-color="#f5efe8"/>
+        </linearGradient>
+        <linearGradient id="grass_gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7ab5a8"/>
+            <stop offset="100%" stop-color="#5a9485"/>
+        </linearGradient>
+        <linearGradient id="cloud_gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#eef2fa"/>
+            <stop offset="100%" stop-color="#d4e4f7"/>
+        </linearGradient>
+        <radialGradient id="center_gradient" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#fffef8"/>
+            <stop offset="100%" stop-color="#f0e6d0"/>
+        </radialGradient>
+        <radialGradient id="dew_gradient" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+            <stop offset="40%" stop-color="rgba(220,240,255,0.5)"/>
+            <stop offset="100%" stop-color="rgba(180,215,255,0.15)"/>
+        </radialGradient>
+    `;
+    // Create petal gradients for each plant
+    research_garden.forEach((plant, index) => {
+        var lighter = get_whiter_color(plant.flower_color, 50);
+        var darker = get_whiter_color(plant.flower_color, -40);
+        var grad = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
+        grad.id = `grad_plant_${index}`;
+        grad.setAttribute("cx", "40%"); grad.setAttribute("cy", "30%"); grad.setAttribute("r", "70%");
+        grad.innerHTML = `<stop offset="0%" stop-color="${lighter}"/><stop offset="100%" stop-color="${darker}"/>`;
+        defs.appendChild(grad);
+        var hoverGrad = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
+        hoverGrad.id = `grad_plant_${index}_hover`;
+        hoverGrad.setAttribute("cx", "40%"); hoverGrad.setAttribute("cy", "30%"); hoverGrad.setAttribute("r", "70%");
+        hoverGrad.innerHTML = `<stop offset="0%" stop-color="${get_whiter_color(plant.flower_color, 70)}"/><stop offset="100%" stop-color="${plant.flower_color}"/>`;
+        defs.appendChild(hoverGrad);
+    });
+    $('#garden').prepend(defs);
+
+    // Sky background
+    const skyRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    skyRect.setAttribute("width", garden_width);
+    skyRect.setAttribute("height", garden_height);
+    skyRect.setAttribute("fill", "url(#sky_gradient)");
+    $('#garden').append(skyRect);
 
     // now let's add clouds, same concept, but at the top instead of bottom
     var cloudSegments = Math.ceil(garden_width / cloudWidth);
@@ -230,6 +278,7 @@ function renderGarden() {
     }
     cloudPath += ` L${garden_width},0 L0,0 Z`; // Close the path by extending to top corners
     wavyCloud.setAttribute("d", cloudPath);
+    wavyCloud.setAttribute("fill", "url(#cloud_gradient)");
     $('#garden').append(wavyCloud);
 
     // Add wavy grass decoration at the top
@@ -250,10 +299,16 @@ function renderGarden() {
 
     wavePath += ` L${garden_width},${garden_height} L0,${garden_height} Z`; // Close the path by extending to top corners
     wavyGrass.setAttribute("d", wavePath);
+    wavyGrass.setAttribute("fill", "url(#grass_gradient)");
     $('#garden').append(wavyGrass);
 
+    // Add indirect connections group after backgrounds so it's visible
+    const indirectConnectionsGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    indirectConnectionsGroup.setAttribute("class", "indirect-connections-group");
+    $('#garden').append(indirectConnectionsGroup);
+
     research_garden.forEach((plant, index) => {
-        const x_pos = (index + 0.5) * plantWidth;
+        const x_pos = garden_x_offset + (index + 0.5) * plantWidth;
         const plantElement = createPlant(plant, x_pos, index);
         $('#garden').append(plantElement);
     });
