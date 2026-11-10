@@ -10,8 +10,7 @@
     /* margin-bottom: 100px; */
 }
 #garden {
-    /* background handled by SVG gradient */
-    /* width: 1000px; */
+    display: block;   /* avoid the inline-baseline gap that adds a vertical scrollbar */
 }
 #garden_title, #coauthor_hall_of_fame {
 }
@@ -33,22 +32,75 @@
     font-family: "Roboto Condensed";
     text-shadow: 0 1px 4px rgba(33, 50, 105, 0.1);
 }
-.grass {
-    /* fill applied via SVG gradient */
-}
-.clouds {
-    /* fill applied via SVG gradient */
-}
 .stem {
     stroke: #1a7d6d;
     stroke-width: 2.5;
     fill: none;
     stroke-linecap: round;
+    transition: stroke 0.2s, stroke-width 0.2s;
 }
 .root_stem {
     stroke: #1a7d6d;
     stroke-width: 4;
     stroke-linecap: round;
+}
+.stem.lineage {
+    stroke: #0b5a4d;
+    stroke-width: 3.6;
+}
+.leaf_vein {
+    stroke: rgba(255, 255, 255, 0.45);
+    stroke-width: 0.8;
+    stroke-linecap: round;
+}
+.hill_back { fill: url(#hill_back_gradient); }
+.grass { fill: url(#grass_gradient); }
+.tufts path {
+    stroke: #4d8a76;
+    stroke-width: 1.6;
+    fill: none;
+    stroke-linecap: round;
+}
+.sun_glow {
+    fill: #fff6d8;
+    opacity: 0.55;
+    filter: blur(28px);
+}
+.cloud {
+    fill: #ffffff;
+    opacity: 0.85;
+    animation: cloud-drift 50s ease-in-out infinite alternate;
+}
+@keyframes cloud-drift {
+    from { transform: translateX(-25px); }
+    to { transform: translateX(25px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cloud { animation: none; }
+}
+.label {
+    paint-order: stroke;
+    stroke: rgba(246, 244, 238, 0.9);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+    fill: #1f2a3a;
+}
+.label:hover { fill: #213269; }
+.latest-sign { cursor: pointer; }
+.latest-sign rect {
+    fill: #d4a843;
+    stroke: #8B6914;
+    stroke-width: 0.8;
+}
+.latest-sign text {
+    fill: #4a3000;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+}
+.flower.lineage .flower_subgroup {
+    transform: scale(1.1);
+    transition: transform 0.2s;
 }
 .petal {
     transition: fill 0.2s;
@@ -76,18 +128,19 @@
     font-size: 16px;
     font-weight: 500;
     text-anchor: middle;
-    fill: #333;
+    fill: #163a33;
+    letter-spacing: 0.3px;
 }
 #flower_template {
     display: none;
 }
 .plant_label0 {
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 16px;
 }
 .plant_label1 {
-    font-weight: 300;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 13px;
 }
 .paper_label0 {
     cursor: pointer;
@@ -103,9 +156,11 @@
     text-anchor: end;
 }
 .indirect_connection {
-    stroke: rgba(19, 150, 84, 0.4);
-    stroke-width: 2;
-    stroke-dasharray: 4 3;
+    stroke: rgba(19, 130, 84, 0.45);
+    stroke-width: 1.8;
+    stroke-dasharray: 5 4;
+    stroke-linecap: round;
+    fill: none;
 }
 .title {
     font-family: "Roboto Condensed";
@@ -285,4 +340,36 @@
     #garden_title_scroll_hint {
         display: inline;
     }
+}
+/* wooden stakes with the plant names */
+.stake_board {
+    fill: url(#wood_gradient);
+    stroke: #7a4f26;
+    stroke-width: 1.2;
+    filter: drop-shadow(0 2px 2px rgba(40, 30, 10, 0.25));
+}
+.stake_post { fill: #8a5a2c; }
+.stake_grain {
+    stroke: rgba(110, 70, 30, 0.28);
+    stroke-width: 1;
+    fill: none;
+    stroke-linecap: round;
+}
+.stake_nail { fill: #6b4a2a; }
+.stake .direction-label { fill: #4a2c12; letter-spacing: 0.2px; }
+
+/* the garden title, written on a cloud */
+.title_cloud_body {
+    fill: #ffffff;
+    filter: drop-shadow(0 4px 8px rgba(90, 120, 170, 0.18));
+}
+.garden_cloud_title {
+    font-family: "Roboto Condensed", Roboto, sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    fill: #213269;
+}
+#garden_container {
+    margin-top: 40px;
 }

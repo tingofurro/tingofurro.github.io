@@ -111,13 +111,20 @@
             data-links-data="https://huggingface.co/datasets/microsoft/lost_in_conversation">
         </article>
 
-        <article class="paper-entry" data-id="delegate52" data-title="DELEGATE52" data-venue="arxiv"
-            data-url="https://arxiv.org/abs/2604.15597" data-parent="lost_in_conv" data-latest="1"
+        <article class="paper-entry" data-id="delegate52" data-title="DELEGATE52" data-venue="COLM2026"
+            data-url="https://arxiv.org/abs/2604.15597" data-parent="lost_in_conv"
             data-coauthors="Tobias Schnabel, Jennifer Neville"
             data-full-title="LLMs Corrupt Your Documents When You Delegate"
             data-summary="We create work environments in 52 professional domains (such as crystallography, aviation, weaving, Python programming) and simulate long-horizon delegated workstreams to study current AI system readiness for delegated workflows (i.e., vibe-coding). We find that current LLMs corrupt documents during delegated workflows, and are not yet ready for delegation across diverse professional contexts."
             data-links-code="https://github.com/microsoft/delegate52"
             data-links-data="https://huggingface.co/datasets/microsoft/delegate52">
+        </article>
+
+        <article class="paper-entry" data-id="evolving_intent" data-title="Evolving User Intent" data-venue="arXiv"
+            data-url="https://arxiv.org/abs/2607.20734" data-parent="lost_in_conv"
+            data-coauthors="Jihoon Tack, Jennifer Neville"
+            data-full-title="LLMs Get Lost in Evolving User Intent"
+            data-summary="Work led by Jihoon Tack, which simulates not only underspecified intents, but other dynamics like revisions (exploration) and changes of task. Surprise surprise: model performance degrades further when user intents are revealed more dynamically.">
         </article>
 
         <article class="paper-entry" data-id="userlm" data-title="UserLM" data-venue="ICLR2026"
@@ -126,6 +133,13 @@
             data-full-title="Flipping the Dialogue: Training and Evaluating User Language Models"
             data-summary="We train an 8b LLM specifically to simulate the user role in user-AI conversations. We find that this model is much more diverse in natural in simulating users than prompting assistant models (the standard approach). We argue for the development of better user-simulating models, as we show assistant models are limited in their simulation capabilities."
             data-links-model="https://huggingface.co/microsoft/UserLM-8b">
+        </article>
+
+        <article class="paper-entry" data-id="userlm2" data-title="UserLM-2.0" data-venue="arXiv"
+            data-url="https://arxiv.org/abs/2610.31512" data-parent="userlm" data-latest="1"
+            data-coauthors="Mustafa Omer Gul, Tanya Goyal, Jennifer Neville"
+            data-full-title="Towards User Simulators That Stay On Task And Still Sound Natural"
+            data-summary="Work led by Omer Gul, the sequel to UserLM. We proposed a post-training (RL) stage that optimizes task fidelity and naturalness jointly for the simulator. The insight: the naturalness scorer should be a discriminator that is trained jointly with the simulator.">
         </article>
 
         <!-- ===== Writing/Editing (2020-now) ===== -->
@@ -159,7 +173,7 @@
         </article>
 
         <article class="paper-entry" data-id="ai_writing_idiosyncracies" data-title="Writing Idiosyncracies" data-venue="CHI2025"
-            data-url="https://arxiv.org/abs/2409.14509" data-parent="art_or_artifice" data-is-left-child="1"
+            data-url="https://arxiv.org/abs/2409.14509" data-parent="art_or_artifice"
             data-coauthors="Tuhin Chakrabarty, Chien-Sheng Wu"
             data-full-title="Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits"
             data-summary="Work led by Tuhin at Salesforce Research. Following up on Art or Artifice. Lowering our expectation from a story (1000+ words) to a single paragraph (100-200 words). We find in a controlled experiment that LLMs still struggle to generate high-quality creative writing even in shorter form. Neat finding: when allowing an LLM to: (1) draft, (2) detect issues, (3) edit them through executable edits, then LLMs are capable of improving their writing!"
@@ -178,8 +192,8 @@
             data-links-recorded_presentation="https://www.youtube.com/watch?v=3RMo1nWIqCY">
         </article>
 
-        <article class="paper-entry" data-id="writing_quality_reward_models" data-title="Writing Quality Reward Models" data-venue="arXiv"
-            data-url="https://arxiv.org/abs/2504.07532" data-parent="ai_writing_idiosyncracies" data-is-left-child="1"
+        <article class="paper-entry" data-id="writing_quality_reward_models" data-title="Writing Quality Reward Models" data-venue="COLM2025"
+            data-url="https://arxiv.org/abs/2504.07532" data-parent="ai_writing_idiosyncracies"
             data-coauthors="Tuhin Chakrabarty, Chien-Sheng Wu"
             data-full-title="AI-Slop to AI-Polish? Aligning Language Models through Edit-Based Writing Rewards and Test-time Computation"
             data-summary="Work co-led with Tuhin Chakrabarty continuing our great CHI2025. In this work, we build out methods to evaluate *writing quality* in for fiction and non-fiction writing tasks. We release a model (WQRM) we believe is best-in-class at measuring writing quality, as confirmed by our benchmark results."
@@ -221,7 +235,7 @@
         </article>
 
         <article class="paper-entry" data-id="summary_of_a_haystack" data-title="Summary of a Haystack" data-venue="EMNLP2024"
-            data-url="https://arxiv.org/abs/2407.01370" data-parent="summedits" data-is-left-child="1"
+            data-url="https://arxiv.org/abs/2407.01370" data-parent="summedits"
             data-coauthors="Alexander R. Fabbri, Caiming Xiong, Chien-Sheng Wu"
             data-full-title="Summary of a Haystack: A Challenge to Long-Context LLMs and RAG Systems"
             data-summary="How good are LLMs or RAG systems at dealing with long-context (~100k tokens) and precisely summarizing and citing back to relevant documents. Alex Fabbri and I very carefully synthesized Haystacks of documents to explore the subject. Neat Finding: in 2024, RAG vs. long-context LLMs is not a winner takes all (yet). RAGs are better when citation/attribution is important, whereas long-context single-step is more competitive when information (without citation) is desired."
@@ -235,6 +249,13 @@
             data-full-title="Search Engines in an AI Era: The False Promise of Factual and Verifiable Source-Cited Responses"
             data-summary="Work led by Pranav Venkit as an intern at Salesforce Research. Explored whether 'answer engines' (generative search engines, which are simply RAG-based summarization systems) capable of producing accurate and attributed answers to technical user queries. Neat Finding: the qualitative study led to a quantitative framework with ~8 metrics, most of which current answer engines struggle on."
             data-links-code="https://github.com/SalesforceAIResearch/answer-engine-eval">
+        </article>
+
+        <article class="paper-entry" data-id="deeptrace" data-title="DeepTRACE" data-venue="ICLR2026"
+            data-url="https://arxiv.org/abs/2509.04499" data-parent="answer_engine_eval"
+            data-coauthors="Pranav Narayanan Venkit, Yilun Zhou, Kung-Hsiang Huang, Yixin Mao, Chien-Sheng Wu"
+            data-full-title="DeepTRACE: Auditing Deep Research AI Systems for Tracking Reliability Across Citations and Evidence"
+            data-summary="Work led by Pranav Venkit, a follow-up to Answer Engine Eval. We operationalized the insights from the interviews into metrics, turning a qualitative study into a quantitative, automatable benchmark.">
         </article>
 
         <article class="paper-entry" data-id="aggrefact" data-title="AggreFact" data-venue="ACL2023"
@@ -258,10 +279,10 @@
             data-links-data_hf="https://huggingface.co/datasets/lytang/LLM-AggreFact">
         </article>
 
-        <!-- ===== Reading (2016-2023) ===== -->
+        <!-- ===== Reading (2016-now) ===== -->
         <article class="paper-entry" data-id="newslens" data-title="NewsLens" data-venue="ACL2017 Workshop"
             data-url="https://aclanthology.org/W17-2701.pdf"
-            data-root-node="1" data-root-name="Reading|2016-2023" data-root-color="#FA9189"
+            data-root-node="1" data-root-name="Reading|2016-now" data-root-color="#FA9189"
             data-coauthors="Marti A. Hearst"
             data-full-title="newsLens: building and visualizing long-ranging news stories"
             data-summary="My first foray into news reading interfaces, presented at the News Workshop of ACL 2017. The work presents how a large-scale stream of news articles can be organized into evolving news timelines, how to name and visualize them.">
@@ -321,9 +342,17 @@
             data-summary="Follow-up of Discord Questions and Assembly. Once we've found a topic of discord within a corpus of documents, how good are LLMs at describing this diversity when they summarize the information. Neat finding: LLMs are not so good at nuanced summarization, and tend to focus on information either at the top/bottom of their context window (arbitrary), or on predominantly represent opinion. Work led by Steeve Huang when he was an intern at Salesforce Research!"
             data-links-code_data="https://github.com/salesforce/DiverseSumm">
         </article>
+
+        <article class="paper-entry" data-id="attribution_gradients" data-title="Attribution Gradients" data-venue="UIST2026"
+            data-url="https://arxiv.org/abs/2510.00361" data-parent="diverse_summ"
+            data-indirect-connections="answer_engine_eval"
+            data-coauthors="Hita Kambhamettu, Alyssa Hwang, Andrew Head"
+            data-full-title="Attribution Gradients: Incrementally Unfolding Citations for Critical Examination of Attributed AI Answers"
+            data-summary="Work led by Hita Kambhamettu. Attribution Gradients is a reading interface that incrementally unfolds the evidence behind AI answers with references. In a lab study, participants using the interface produced substantially higher-quality revisions of AI-generated answers.">
+        </article>
     </details>
 
-    <script src="garden.js?v=3"></script>
+    <script src="garden.js?v=9"></script>
     <script>
         // Read papers from HTML data attributes
         var papers = [];
@@ -341,6 +370,7 @@
             if ($el.data('root-node')) { paper.root_node = 1; paper.root_name = ($el.data('root-name') || '').replace(/\|/g, '\n'); paper.root_color = $el.data('root-color'); }
             if ($el.data('parent')) { paper.parent = $el.data('parent'); }
             if ($el.data('is-left-child')) { paper.is_left_child = 1; }
+            if ($el.data('latest')) { paper.latest = 1; }
             if ($el.data('indirect-connections')) {
                 paper.indirect_connections = $el.data('indirect-connections').split(', ');
             }
@@ -355,69 +385,7 @@
             if (Object.keys(additional_links).length > 0) { paper.additional_links = additional_links; }
             papers.push(paper);
         });
-        // Find the latest paper id
-        var latest_id = null;
-        $('#paper_data .paper-entry[data-latest]').each(function() { latest_id = $(this).data('id'); });
-
         build_garden(papers);
-
-        // Add garden sign/stake next to the latest flower
-        if (latest_id && flower_positions[latest_id]) {
-            var pos = flower_positions[latest_id];
-            var sign_g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            // Position below the label text (to the right of flower, under "arXiv")
-            var sx = pos.x - 75, sy = pos.y + garden_height + 28;
-            // Sign board
-            var board = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            board.setAttribute('x', sx - 28); board.setAttribute('y', sy - 1);
-            board.setAttribute('width', '75'); board.setAttribute('height', '16');
-            board.setAttribute('rx', '2'); board.setAttribute('ry', '2');
-            board.setAttribute('fill', '#d4a843');
-            board.setAttribute('stroke', '#8B6914');
-            board.setAttribute('stroke-width', '0.8');
-            // Text on the sign
-            var sign_text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            sign_text.setAttribute('x', sx + 8);
-            sign_text.setAttribute('y', sy + 11);
-            sign_text.setAttribute('text-anchor', 'middle');
-            sign_text.setAttribute('fill', '#4a3000');
-            sign_text.setAttribute('font-size', '9');
-            sign_text.setAttribute('font-weight', '500');
-            sign_text.setAttribute('font-family', 'Roboto, sans-serif');
-            sign_text.textContent = '\u{1F331} Just planted!';
-            sign_g.appendChild(board);
-            sign_g.appendChild(sign_text);
-            sign_g.setAttribute('class', 'latest-sign');
-            sign_g.setAttribute('style', 'cursor:pointer');
-            sign_g.setAttribute('onclick', "open_paper('" + latest_id + "')");
-            $('#garden').append(sign_g);
-
-            // Add dewdrops around the latest flower
-            var dew_g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            dew_g.setAttribute('class', 'dew-drops');
-            var fx = pos.x, fy = pos.y + garden_height;
-            var drops = [
-                {dx: 10, dy: 10, r: 3}
-            ];
-            drops.forEach(function(d) {
-                var drop = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                drop.setAttribute('cx', fx + d.dx);
-                drop.setAttribute('cy', fy + d.dy);
-                drop.setAttribute('r', d.r);
-                drop.setAttribute('fill', 'url(#dew_gradient)');
-                drop.setAttribute('stroke', 'rgba(255,255,255,0.6)');
-                drop.setAttribute('stroke-width', '0.5');
-                // White specular highlight
-                var spec = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                spec.setAttribute('cx', fx + d.dx - d.r * 0.25);
-                spec.setAttribute('cy', fy + d.dy - d.r * 0.3);
-                spec.setAttribute('r', d.r * 0.35);
-                spec.setAttribute('fill', 'rgba(255,255,255,0.85)');
-                dew_g.appendChild(drop);
-                dew_g.appendChild(spec);
-            });
-            $('#garden').append(dew_g);
-        }
 
         // Generate JSON-LD structured data from the same HTML source
         var ldItems = papers.map(function(p) {
