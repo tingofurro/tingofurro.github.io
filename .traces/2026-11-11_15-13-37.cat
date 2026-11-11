@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cat version="1" ide="claude-code" sessionId="b588894f-66fa-4a85-881b-f53e7c6eb1f5"
+       workspace=":/home/tingotower/tingofurro.github.io"
+       title="Rewritten intro comparison"
+       created="2026-11-11T15:13:37Z" lastMessage="2026-11-11T15:24:40Z"
+       exchanges="2" entrypoint="claude-vscode" ideVersion="2.1.322">
+  <turn role="user" timestamp="2026-11-11T15:13:37Z" permissionMode="auto">
+    <ref name="index.html#24-27" path="/home/tingotower/tingofurro.github.io/index.html#24-27"/>
+    <text>I've rewritten my intro. See what I had before and what I have now and lmk what you think. If you think it can be improved feel free to suggest ideas. Don't edit anything yourself</text>
+  </turn>
+  <turn role="assistant" model="claude-sonnet-5-5" tokens="54324" effort="medium" thinkingMs="469" commit="83311dd53096f6b06e9552881bffe3920bdd4458" dirty="true">
+    <tool name="terminal" command="git diff -U2 index.html | head -80" description="Show uncommitted changes to index.html" durationMs="636">
+      <result>diff --git a/index.html b/index.html
+index 2d191ff..3740439 100644
+--- a/index.html
++++ b/index.html
+@@ -16,5 +16,5 @@
+             &lt;div id="right_block"&gt;
+                 &lt;img src="phil20.jpeg" id="phil_image" /&gt;
+-                &lt;a href="mailto:plaban@microsoft.com"&gt;plaban@microsoft.com&lt;/a&gt;&lt;br /&gt;
++                &lt;a href="mailto:plaban@salesforce.com"&gt;plaban@salesforce.com&lt;/a&gt;&lt;br /&gt;
+                 &lt;a href="https://www.linkedin.com/in/philippe-laban-b5a59b66/" target="_blank"&gt;LinkedIn&lt;/a&gt;&lt;br /&gt;
+                 &lt;a href="https://x.com/PhilippeLaban" target="_blank"&gt;X/Twitter&lt;/a&gt;&lt;br /&gt;
+@@ -22,10 +22,8 @@
+             &lt;/div&gt;
+             &lt;div id="intro_para"&gt;
+-                Hi! I'm a Research Scientist at &lt;a href="https://www.microsoft.com/en-us/research/"&gt;Microsoft Research&lt;/a&gt;, based in New York. I completed my Ph.D. in CS in 2021, advised by 
++                Hi! I'm a Principal Research Scientist at &lt;a href="https://www.salesforce.com/"&gt;Salesforce Research&lt;/a&gt;, based in New York. I completed my Ph.D. in CS in 2021, advised by 
+                 &lt;a href="http://people.ischool.berkeley.edu/~hearst/"&gt;Marti Hearst&lt;/a&gt; and &lt;a href="https://people.eecs.berkeley.edu/~jfc/"&gt;John Canny&lt;/a&gt; at UC Berkeley.&lt;br /&gt;&lt;br /&gt;
+     
+-                I work at the intersection of NLP (~70%) and HCI (~30%). I am passionate about studying and building the future of &lt;span style="color: #a8372f;"&gt;reading&lt;/span&gt; and &lt;span style="color: #379644;"&gt;writing&lt;/span&gt; interfaces as I believe that NLP technology will revolutionize how we &lt;span style="color: #a8372f;"&gt;consume&lt;/span&gt; (read) and &lt;span style="color: #379644;"&gt;create&lt;/span&gt; (write) information. How do we get there?&lt;br /&gt;&lt;br /&gt;
+-
+-                Specific tasks I'm passionate about include &lt;span style="color: #b3890d;"&gt;summarization&lt;/span&gt;, &lt;span style="color: #379644;"&gt;simplification&lt;/span&gt; (which you can think of as "reading tools" if you choose to), and &lt;span style="color: #6d3cdf;"&gt;LLM evaluation/benchmarking&lt;/span&gt;.&lt;br /&gt;&lt;br /&gt;
++                I work at the intersection of NLP (~70%) and HCI (~30%). I work broadly on evaluating AI systems in human-AI collaborative settings. In short: autonomous AI systems can severely degrade in performance when they are used in real-world, collaborative settings where they have to interact with humans. How do we empower humans to accomplish more, with the help of AI?
+     
+                 See my research garden below for a visual organization of some of my work, or my &lt;a href="https://scholar.google.com/citations?user=fR5t200AAAAJ&amp;hl=en&amp;oi=ao" target="_blank"&gt;Google Scholar&lt;/a&gt; for a full list of publications.</result>
+    </tool>
+    <text>Heads-up: the diff includes your work email address. That's fine for a public site, but be aware it's there.
+
+**Before:** Research Scientist at Microsoft Research. The focus was reading and writing interfaces, colour-coded. The second paragraph listed specific tasks: summarization, simplification and LLM evaluation.
+
+**Now:** Principal Research Scientist at Salesforce Research. The focus is evaluating AI systems in human-AI collaboration, and it ends on the question "How do we empower humans to accomplish more, with the help of AI?"
+
+**What works**
+- The new version has a clearer thesis. The old one was a vision ("NLP will revolutionize reading and writing"). The new one makes a claim: autonomous AI degrades when humans are in the loop. That's more current and more distinctive.
+- It's shorter, and it still ends on a question that leads into the garden.
+
+**What I'd improve**
+1. **"In short:" is awkward.** The sentence before it is already short, so it doesn't summarize anything. Try "The core problem: ..." or fold it into one sentence.
+2. **"Severely degrade" is a strong claim with no evidence.** Your own papers back it up, so cite one. For example, link LLMs Get Lost in Multi-Turn Conversation, or whichever paper you consider the flagship result. Linking it makes the claim credible and gives readers something concrete to click.
+3. **Vague phrasing.** "Work broadly on evaluating" and "collaborative settings" both sound generic. Name the concrete setups, such as multi-turn conversation, user simulation or co-writing. This also keeps part of your reading/writing identity.
+4. **The ~70/30 split now reads as filler.** It's a nice touch, but it no longer connects to the sentence that follows. Either keep it as a quick framing device or drop it.
+5. **Repetition.** "Human-AI collaborative settings" and "collaborative settings where they have to interact with humans" say the same thing twice.
+6. **Lost visual identity.** The coloured keywords gave the paragraph some personality. Highlighting two or three terms (for example the failure mode and the research directions) would bring that back.
+7. **Search terms.** Your summarization and simplification work is no longer mentioned. If you want people to find it, add a short clause like "previously focused on summarization and reading tools". If you're moving on from it, leave it out.
+
+**Suggested rewrite**
+
+&gt; I work at the intersection of NLP (~70%) and HCI (~30%), evaluating AI systems when they work *with* people rather than alone. Models that look strong on autonomous benchmarks often [degrade sharply in multi-turn, real-world interaction](link). My research asks how we measure that gap, and how we build AI that helps humans accomplish more.
+
+It's three sentences. It keeps your thesis, adds an anchor link, and removes the redundancy. I haven't edited anything. If you want, I can try a version that keeps the colour highlighting.</text>
+  </turn>
+  <turn role="user" timestamp="2026-11-11T15:24:40Z" permissionMode="auto">
+    <ref name="index.html#27-27" path="/home/tingotower/tingofurro.github.io/index.html#27-27"/>
+    <text>I rewrote it, see what I did. I'm not 100% certain about the last sentence it's a little long. I don't want citation, my work is literally listed 100px below...</text>
+  </turn>
+</cat>
